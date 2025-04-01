@@ -1,0 +1,393 @@
+/* =====================
+   General Styles
+====================== */
+
+.bg-white {
+  background-color: #ffffff !important; /* Fondo blanco en modo claro */
+}
+
+/* Fondo para el modo oscuro */
+.dark-mode .bg-white {
+  background-color: #1b1b1bde !important; /* Fondo gris en modo oscuro */
+}
+
+/* Fondo y texto en el cuerpo */
+body.dark-mode {
+  background-color: #1b1b1bde;
+  color: #ffffff;
+}
+
+.dark-mode .info-box .info-box-content p {
+  color: #fff !important; /* Texto blanco en el modo oscuro */
+}
+
+.dark-mode .info-box .info-box-title {
+  color: #fff !important; /* Títulos en blanco */
+}
+
+.dark-mode .info-box .info-box-subtitle {
+  color: #fff !important; /* Subtítulos en blanco */
+}
+
+/* Transiciones para el modo oscuro */
+body, .navbar, .footer, .btn {
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+/* =====================
+   TEXTO DE DRAWPER
+====================== */
+/* Estilo para el fondo oscuro en el acordeón solo en modo oscuro */
+.dark-mode .accordion-group .card-body {
+  background-color: #333 !important; /* Fondo oscuro en el modo oscuro */
+  color: #fff; /* Asegura que el texto sea blanco en modo oscuro */
+}
+
+/* Estilo para el fondo del acordeón en el modo claro (sin cambios) */
+.accordion-group .card-body {
+  background-color: #fff; /* Fondo blanco en el modo claro */
+  color: #000; /* Texto negro en el modo claro */
+}
+
+/* =====================
+   Header and Navigation
+====================== */
+
+/* Fondo oscuro en la barra de navegación */
+.dark-mode .navbar {
+  background-color: #22222242;
+}
+
+/* Estilo de los enlaces en la barra de navegación */
+.dark-mode .navbar a,
+.dark-mode .navbar .navbar-brand {
+  color: #fff;
+}
+
+.dark-mode .navbar a:hover {
+  color: #ff0000;
+}
+
+/* =====================
+   MENU OPCIONES
+====================== */
+
+
+/* Estilo para los enlaces en la barra de navegación */
+.dark-mode .navbar a {
+  color: #ffffff !important; /* Texto blanco en los enlaces */
+}
+
+/* Estilo para los enlaces al pasar el ratón */
+.dark-mode .navbar a:hover {
+  color: #ff5722 !important; /* Resalta los enlaces con un color naranja brillante al pasar el ratón */
+}
+
+/* Estilo para los elementos del menú desplegable en modo oscuro */
+.dark-mode .navbar .dropdown-menu {
+  background-color: #333333 !important; /* Fondo oscuro para los menús desplegables */
+  color: #fff !important; /* Texto blanco en los menús desplegables */
+}
+
+.dark-mode .navbar .dropdown-menu a {
+  color: #fff !important; /* Texto blanco en los enlaces del menú desplegable */
+}
+
+.dark-mode .navbar .dropdown-menu a:hover {
+  color: #ff5722 !important; /* Enlaces resaltados con un color brillante al pasar el ratón */
+}
+
+/* Estilo para los íconos de las flechas en el menú desplegable */
+.dark-mode .navbar .dropdown-toggle i {
+  color: #fff !important; /* Asegura que las flechas sean blancas en el modo oscuro */
+}
+
+/* Estilo para el fondo de los submenús en modo oscuro */
+.dark-mode .navbar .dropdown-menu .active {
+  background-color: #e53935 !important; /* Fondo rojo para el submenú activo */
+  color: #fff !important; /* Texto blanco para el submenú activo */
+}
+
+/* =====================
+   Footer Styles
+====================== */
+
+/* Estilo para el pie de página (footer) en modo oscuro */
+.dark-mode footer {
+  background-color: #222 !important; /* Fondo oscuro para el pie de página */
+  color: #e0e0e0 !important; /* Color de texto claro */
+}
+
+/* Cambia el color de los enlaces sociales */
+.dark-mode .footer .footer-social a {
+  color: #940000 !important; /* Iconos de redes sociales en blanco */
+}
+
+.dark-mode .footer .footer-social a:hover {
+  color: #ff9800 !important; /* Color de los iconos al pasar el ratón */
+}
+
+/* Cambia el color del texto en el pie de página */
+.dark-mode .footer .footer-logo,
+.dark-mode .footer .footer-about p {
+  color: #fff !important; /* Texto blanco */
+}
+
+/* Estilo para las cajas de información en el pie de página */
+.dark-mode .footer-widget .info-box-content p {
+  color: #e0e0e0 !important; /* Asegura que el texto sea visible */
+}
+
+/* Estilo para los botones en el pie de página */
+.dark-mode .footer-widget .btn {
+  background-color: #e53935 !important; /* Fondo de botones rojo oscuro */
+  color: #fff !important; /* Texto blanco */
+}
+
+.dark-mode .footer-widget .btn:hover {
+  background-color: #d32f2f !important; /* Fondo más claro cuando se pasa el ratón */
+}
+
+/* =====================
+   Sidebar Styles
+====================== */
+
+/* Fondo oscuro en la barra lateral */
+.dark-mode .sidebar {
+  background-color: #000000;
+  color: #da0808;
+}
+
+/* Títulos de los widgets en la barra lateral */
+.dark-mode .sidebar .widget-title {
+  color: #da0303;
+}
+
+/* =====================
+   Buttons and Links
+====================== */
+
+/* Estilo de los botones en modo oscuro */
+.dark-mode .btn {
+  background-color: #e53935 !important; /* Fondo de botones rojo oscuro */
+  color: #fff !important; /* Texto blanco en los botones */
+  border: none !important; /* Elimina cualquier borde */
+}
+
+.dark-mode .btn:hover {
+  background-color: #d32f2f !important; /* Fondo más claro para el hover */
+}
+
+/* Estilo para los enlaces en modo oscuro */
+.dark-mode a {
+  color: #ffffff !important; /* Enlaces en color gris claro */
+}
+
+.dark-mode a:hover {
+  color: #000000 !important; /* Resalta los enlaces con un color naranja brillante */
+}
+
+/* =====================
+   Carousel and Media
+====================== */
+
+/* Asegura que las imágenes del carrusel sean transparentes en modo oscuro */
+.dark-mode .carousel-item img,
+.dark-mode .swiper-slide img {
+  filter: grayscale(0%) !important; /* Elimina cualquier filtro de escala de grises */
+  background-color: transparent !important; /* Fondo transparente */
+  box-shadow: none !important; /* Elimina cualquier sombra no deseada */
+  border: none !important; /* Elimina los bordes */
+}
+
+/* Asegura que el contenedor del carrusel no tenga fondo blanco en modo oscuro */
+.dark-mode .swiper-container,
+.dark-mode .carousel {
+  background-color: transparent !important;
+}
+
+/* Añadir transición suave a las imágenes en modo oscuro */
+.dark-mode .carousel-item img,
+.dark-mode .swiper-slide img {
+  transition: background-color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Fondo negro transparente en imágenes */
+.dark-mode .carousel-item img,
+.dark-mode .swiper-slide img {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+/* =====================
+   Forms and Inputs
+====================== */
+
+/* Estilo para los formularios en modo oscuro */
+.dark-mode .form-control {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode .form-control:focus {
+  background-color: #444;
+  border-color: #ff9800;
+}
+
+/* =====================
+   Text and Typography
+====================== */
+
+/* Estilo para los encabezados en modo oscuro */
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+  color: #fff;
+}
+
+/* Estilo para el título de las entradas */
+.dark-mode .entry-title {
+  color: #fff;
+}
+
+/* Estilo para las metainformaciones de la entrada */
+.dark-mode .post-meta {
+  color: #9a9a9a;
+}
+
+/* =====================
+   Theme Toggle Button
+====================== */
+
+/* Estilo para el botón de cambio de tema */
+#theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+}
+
+#theme-toggle:hover {
+  background-color: #555;
+}
+
+/* =====================
+   Comments Section
+====================== */
+
+/* Estilo para el área de comentarios */
+.dark-mode .comments-area {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.dark-mode .comment-meta {
+  color: #9a9a9a;
+}
+
+/* =====================
+   Top Bar
+====================== */
+/* Estilo para el top bar en modo claro */
+.top-bar {
+  padding: 8px 0;
+  background: #ebebeb; /* Fondo claro */
+  position: relative;
+}
+
+/* Estilo para el top bar en modo oscuro */
+.dark-mode .top-bar {
+  background: #333 !important; /* Fondo oscuro en modo oscuro */
+  color: #fff !important; /* Texto blanco en modo oscuro */
+}
+
+
+/* =====================
+   PROYECTOS
+====================== */
+/* Estilo para la sección de proyectos recientes en modo oscuro */
+.dark-mode #project-area {
+  background-color: #222 !important; /* Fondo oscuro para la sección de proyectos */
+  color: #fff !important; /* Texto blanco para los proyectos */
+}
+
+/* Estilo para las tarjetas de proyectos */
+.dark-mode .project-img-container {
+  background-color: #333 !important; /* Fondo oscuro para las tarjetas de proyectos */
+  color: #fff !important; /* Texto blanco dentro de las tarjetas */
+}
+
+/* Estilo para los títulos de proyectos */
+.dark-mode .project-item-title a {
+  color: #fff !important; /* Títulos en blanco en el modo oscuro */
+}
+
+/* Estilo para las categorías de proyectos */
+.dark-mode .project-cat {
+  color: #bbb !important; /* Texto gris claro para la categoría */
+}
+
+/* Estilo para los botones de los proyectos */
+.dark-mode .general-btn .btn {
+  background-color: #e53935 !important; /* Fondo de botones en rojo oscuro */
+  color: #fff !important; /* Texto blanco en los botones */
+  border: none !important;
+}
+
+.dark-mode .general-btn .btn:hover {
+  background-color: #d32f2f !important; /* Fondo más claro cuando se pasa el ratón */
+}
+
+/* Estilo para los filtros de proyectos */
+.dark-mode .shuffle-btn-group input[type="radio"]:checked + label {
+  background-color: #e53935 !important; /* Fondo rojo para el filtro activo */
+  color: #fff !important; /* Texto blanco en el filtro activo */
+}
+
+/* Estilo para los filtros de proyectos cuando no están activos */
+.dark-mode .shuffle-btn-group label {
+  color: #fff !important; /* Texto blanco para los filtros */
+  background-color: #444 !important; /* Fondo oscuro para los filtros */
+}
+
+
+/* Estilo para los filtros de proyectos en modo oscuro */
+.dark-mode .shuffle-btn-group input[type="radio"]:checked + label {
+  background-color: #e53935 !important; /* Fondo rojo para el filtro activo */
+  color: #fff !important; /* Texto blanco en el filtro activo */
+  border-color: #e53935 !important; /* Borde rojo para el filtro activo */
+}
+
+/* Estilo para los filtros cuando no están activos */
+.dark-mode .shuffle-btn-group label {
+  color: #fff !important; /* Texto blanco para los filtros */
+  background-color: #444 !important; /* Fondo oscuro para los filtros */
+  border: 1px solid #555 !important; /* Borde gris oscuro */
+}
+
+/* Estilo para los filtros cuando están seleccionados */
+.shuffle-btn-group input[type="radio"]:checked + label {
+  background-color: #e53935 !important; /* Fondo rojo para el filtro activo */
+  color: #fff !important; /* Texto blanco */
+  border-color: #e53935 !important; /* Borde rojo para el filtro activo */
+}
+
+/* Estilo para las etiquetas de los filtros */
+.shuffle-btn-group label {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shuffle-btn-group label:hover {
+  background-color: #d32f2f !important; /* Cambio de color al pasar el ratón */
+}
+
+
+
+

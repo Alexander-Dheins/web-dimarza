@@ -24,6 +24,8 @@ p {
   line-height: 26px;
   font-size: 15px;
 }
+
+
 /* cookis style
 ================================================== */
 .cookie-consent {
@@ -35,8 +37,8 @@ p {
   color: #fff;
   text-align: center;
   padding: 10px;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.5);
-  display: flex;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  display: none; /* Ocultar por defecto */
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -203,6 +205,7 @@ body {
 a:link,
 a:visited {
   text-decoration: none;
+  color: #fff;
 }
 
 a {
@@ -726,11 +729,12 @@ ul.top-info li p.info-text {
 }
 
 .top-social ul li a {
-  color: #2c2c2c;
-  font-size: 14px;
+  color: #bb0808;
+  font-size: 18px;
   transition: 400ms;
   padding: 9px 12px;
 }
+
 
 .top-social ul li a:hover {
   color: #333;
@@ -829,10 +833,10 @@ ul.navbar-nav > li.active > a {
   color: #b91f1f !important;
 }
 
-/*-- Logo --*/
+/*-- Logo de dimarza inicio --*/
 .logo img {
   width: auto;
-  height: 35px;
+  height: 108px;
 }
 
 .header-two .logo img {
@@ -893,7 +897,7 @@ ul.top-info-box li {
 
 ul.top-info-box li:last-child {
   margin-right: 0;
-  padding-right: 0;
+  padding-right: ;
   border-right: 0;
 }
 
@@ -1221,7 +1225,7 @@ ul.navbar-nav > li > a {
 
 .search-block {
   background-color: rgba(0, 0, 0, 0.65);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(204, 34, 34, 0.87);
   display: none;
   padding: 10px;
   position: absolute;
@@ -1277,38 +1281,109 @@ ul.navbar-nav > li > a {
 }
 
 /* Contactanos */
-.header-get-a-quote .btn-primary {
-  padding: 12px 20px !important;
-  font-size: 13px;
-  border-radius: 3px;
-  line-height: normal;
-  text-transform: capitalize;
-  color: #fff;
+.container-contact {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.568);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  margin: 30px auto; /* Añade margen superior e inferior, y centra horizontalmente */
+}
+
+h2 {
+  color: #e62929;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #e62929;
+  box-shadow: 0 0 0 2px rgba(230, 41, 41, 0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+button {
+  background-color: #e62929;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin-left: auto;
+}
+
+button:hover {
+  background-color: #c41f1f;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.form-required {
+  color: #e62929;
+}
+
+.form-invalid {
+  border-color: #e62929 !important;
+}
+
+.error-message {
+  color: #e62929;
+  font-size: 14px;
   margin-top: 5px;
-  margin-right: 1px;
-  
+  display: none;
 }
 
-@media (max-width: 1200px) {
-  .header-get-a-quote .btn-primary {
-    padding: 12px !important;
+@media (max-width: 480px) {
+  .container {
+      padding: 20px;
   }
-}
-
-@media (max-width: 991px) {
-  .header-get-a-quote .btn-primary {
-    padding: 12px 30px !important;
-  }
-}
-
-.header-get-a-quote .btn-primary:hover {
-  background: #272d33;
-  color: #b91f1f !important;
-}
-
-ul.navbar-nav > li.header-get-a-quote:hover > a:after {
-  position: relative;
-  content: no-close-quote;
 }
 
 /* Table of Content
@@ -2276,24 +2351,79 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
   display: none;
 }
 
-/* Clients */
-.clients-logo {
-  margin: 0 0 30px;
-  border: 1px solid #dadada;
-  min-height: 105px;
-  padding: 0 30px;
+/* Unidades Mineras */
+/* Estilo del carrusel */
+.carousel-wrapper { 
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 800px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
 }
 
-.clients-logo img {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
-  -webkit-filter: gray;
-          filter: gray;
+.swiper {
+  width: 100%;
+}
+
+.carousel-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.carousel-logo:hover {
+  filter: grayscale(0%);
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Gradientes para los costados, en el modo oscuro hacerlos transparentes */
+.gradient-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(88, 88, 88, 0.164), rgba(0, 0, 0, 0)); /* Hacerlo más oscuro y transparente */
+}
+
+.gradient-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(88, 88, 88, 0.164), rgba(0, 0, 0, 0)); /* Hacerlo más oscuro y transparente */
+}
+
+/* Flechas del carrusel */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: transparent !important; /* Hace que las flechas sean transparentes */
+  color: #fff; /* Hace que las flechas sean blancas */
+  border: none; /* Elimina cualquier borde */
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Cuando las flechas están activas */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important; /* Las hace ligeramente visibles cuando se pasa el ratón */
+  color: #fff !important;
+}
+
+/* Modo oscuro: hacer que las flechas y gradientes sean transparentes */
+.dark-mode .swiper-button-next,
+.dark-mode .swiper-button-prev {
+  background-color: transparent !important; /* Asegura que las flechas sean transparentes en modo oscuro */
+}
+
+.dark-mode .gradient-left,
+.dark-mode .gradient-right {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)) !important; /* Gradientes oscuros en modo oscuro */
 }
 
 /* Testimonial
@@ -2564,8 +2694,10 @@ img.testimonial-thumb {
 
 /* Footer Sobre nosotros */
 .footer-logo {
-  margin-bottom: 25px;
-  max-height: 35px;
+  margin-bottom: 50px;
+  max-height: 80px;
+  filter: grayscale(100%); /* Convierte la imagen a escala de grises */
+  
 }
 
 /* Footer social */
@@ -2879,7 +3011,7 @@ img.testimonial-thumb {
 
 /*-- Team page --*/
 .team-slide .slick-slide {
-  margin-left: 25px;
+  margin-left: 15px;
   padding-bottom: 60px;
 }
 
@@ -2915,100 +3047,122 @@ img.testimonial-thumb {
           transform: translateX(calc(-50% + 25px));
 }
 
-.team-slide .carousel-control.slick-disabled {
-  opacity: .4;
+/*-- currusel de reclutadores  --*/
+.ts-team-wrapper {
+  background: #cccccc4d;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease;
 }
 
-.team-slide .carousel-control.slick-disabled:hover {
-  background-color: #ddd;
+.team-img-wrapper img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.ts-team-content-classic h3 {
+  margin: 15px 0 10px;
+  font-size: 1.5em;
+}
+
+.ts-team-content-classic p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #be0e0e;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #000000;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
   color: #000;
 }
 
-.ts-team-wrapper {
-  position: relative;
-  overflow: hidden;
+.hidden {
+  display: none;
 }
 
-.ts-team-wrapper .ts-team-content {
-  position: absolute;
-  top: 76%;
-  left: 0;
-  width: 100%;
+.team-social-icons {
+  margin-top: 20px;
+}
+
+.team-social-icons a {
+  margin: 0 10px;
+  color: #000000;
+  font-size: 1.5em;
+}
+
+.team-social-icons a:hover {
+  color: #be0e0e;
+}
+
+/*-- Boton de chat bot reclutamiento  --*/
+
+.bt-reclutchat {
+  background-color: #099c09; /* Color de fondo rojo */
+  color: white; /* Color del texto */
+  padding: 15px 30px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Esquinas redondeadas */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
   height: 100%;
-  padding: 15px 25px;
-  margin-top: 0;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  transition: 350ms;
 }
 
-@media (max-width: 1200px) {
-  .ts-team-wrapper .ts-team-content {
-    top: 72%;
-  }
+.bt-reclutchat:hover {
+  background-color: #000000;
 }
 
-@media (max-width: 575px) {
-  .ts-team-wrapper .ts-team-content {
-    text-align: center;
-  }
-}
-
-.ts-team-wrapper .ts-name {
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 3px;
-  line-height: normal;
-  color: #b91f1f;
-}
-
-.ts-team-wrapper .ts-designation {
-  color: #fff;
-  font-size: 14px;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.ts-team-wrapper .team-social-icons a i {
-  color: #fff;
-  margin-right: 8px;
-  text-align: center;
-  transition: 400ms;
-}
-
-.ts-team-wrapper .team-social-icons a i:hover {
-  color: #b91f1f;
-}
-
-.ts-team-wrapper:hover .ts-team-content {
-  top: 0;
-  padding-top: 50px;
-}
-
-/* Team Classic */
-.ts-team-content-classic {
-  margin-top: 15px;
-}
-
-.ts-team-content-classic .ts-name {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color: #212121;
-}
-
-.ts-team-content-classic .ts-designation {
-  color: #888;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-.ts-team-content-classic .team-social-icons a i {
-  color: #999;
-}
-
-.ts-team-content-classic .team-social-icons a i:hover {
-  color: #b91f1f;
-}
 
 /*-- Precios table  --*/
 .ts-Precios-box {

@@ -1,3 +1,4 @@
+
 jQuery(function ($) {
 	'use strict';
 
@@ -264,3 +265,104 @@ jQuery(function ($) {
 
 
 });
+
+
+
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    speed: 1500,
+    centeredSlides: true,
+    breakpoints: {
+      768: { slidesPerView: 4, centeredSlides: true },
+      1024: { slidesPerView: 5, centeredSlides: true }
+    }
+  });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.carousel');
+  let currentIndex = 0;
+  const totalItems = carousel.children.length;
+
+  function updateCarousel() {
+    const offset = -currentIndex * 320; // Ajusta según el ancho del elemento
+    carousel.style.transform = `translateX(${offset}px)`;
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % totalItems;
+    updateCarousel();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+    updateCarousel();
+  }
+
+  // Mueve el carrusel cada 3 segundos
+  setInterval(showNext, 3000);
+
+  // Botones de navegación
+  document.querySelector('.next-btn').addEventListener('click', showNext);
+  document.querySelector('.prev-btn').addEventListener('click', showPrev);
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // Manejar la apertura del modal
+    document.querySelectorAll('.contactBtn').forEach(button => {
+        button.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            document.getElementById(modalId).style.display = 'block';
+        });
+    });
+
+    // Manejar el cierre del modal
+    document.querySelectorAll('.close').forEach(span => {
+        span.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            document.getElementById(modalId).style.display = 'none';
+        });
+    });
+
+    // Manejar la aceptación de términos y mostrar botones de redes sociales
+    document.querySelectorAll('.acceptBtn').forEach(button => {
+        button.addEventListener('click', function() {
+            const socialId = this.getAttribute('data-social');
+            document.getElementById(socialId).classList.remove('hidden');
+            const modalId = this.closest('.modal').id;
+            document.getElementById(modalId).style.display = 'none';
+        });
+    });
+});
+
+// Modo oscuro
+document.addEventListener('DOMContentLoaded', function () {
+	const themeToggleBtn = document.getElementById('theme-toggle');
+	const body = document.body;
+	
+	// Verifica si hay preferencia guardada en localStorage
+	if (localStorage.getItem('darkMode') === 'true') {
+	  body.classList.add('dark-mode');
+	  themeToggleBtn.textContent = 'Modo Claro';
+	}
+  
+	// Función para alternar entre modo claro y oscuro
+	themeToggleBtn.addEventListener('click', function () {
+	  body.classList.toggle('dark-mode');
+	  
+	  // Actualiza el texto del botón y guarda la preferencia
+	  if (body.classList.contains('dark-mode')) {
+		themeToggleBtn.textContent = 'Modo Claro';
+		localStorage.setItem('darkMode', 'true');
+	  } else {
+		themeToggleBtn.textContent = 'Modo Oscuro';
+		localStorage.setItem('darkMode', 'false');
+	  }
+	});
+  });
+
+  
