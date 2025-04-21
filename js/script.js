@@ -341,28 +341,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Modo oscuro
 document.addEventListener('DOMContentLoaded', function () {
-	const themeToggleBtn = document.getElementById('theme-toggle');
+	const themeToggleBtn = document.getElementById('theme-toggle-checkbox'); // Botón de cambio de tema
 	const body = document.body;
-	
+  
 	// Verifica si hay preferencia guardada en localStorage
 	if (localStorage.getItem('darkMode') === 'true') {
 	  body.classList.add('dark-mode');
-	  themeToggleBtn.textContent = 'Modo Claro';
+	  themeToggleBtn.checked = true; // Marca el checkbox en modo oscuro
 	}
   
 	// Función para alternar entre modo claro y oscuro
-	themeToggleBtn.addEventListener('click', function () {
+	themeToggleBtn.addEventListener('change', function () {
 	  body.classList.toggle('dark-mode');
-	  
-	  // Actualiza el texto del botón y guarda la preferencia
+  
+	  // Guarda la preferencia en localStorage
 	  if (body.classList.contains('dark-mode')) {
-		themeToggleBtn.textContent = 'Modo Claro';
 		localStorage.setItem('darkMode', 'true');
 	  } else {
-		themeToggleBtn.textContent = 'Modo Oscuro';
 		localStorage.setItem('darkMode', 'false');
 	  }
 	});
   });
-
   
+
+
+
+
+// Registra el tiempo de inicio tan pronto como el script se analiza
+const startTime = Date.now();
+const minimumDuration = 3000; // 4.5 segundos en milisegundos
+
+window.addEventListener('load', function() {
+  const loadingScreen = document.getElementById('loading-screen');
+  const mainContent = document.getElementById('main-content');
+
+  // Calcula cuánto tiempo ha pasado desde el inicio
+  const elapsedTime = Date.now() - startTime;
+		  
+  // Calcula cuánto tiempo falta para alcanzar la duración mínima
+  const remainingTime = minimumDuration - elapsedTime;
+
+  // Función para ocultar loader y mostrar contenido
+  function showContent() {
+	if (loadingScreen) {
+	  loadingScreen.style.display = 'none'; // Oculta la pantalla de carga
+	}
+	if (mainContent) {
+	  mainContent.style.display = 'block'; // Muestra el contenido principal
+	}
+  }
+
+  // Si el tiempo transcurrido es menor que la duración mínima,
+  // espera el tiempo restante. Si no, ejecuta inmediatamente.
+  if (remainingTime > 0) {
+	setTimeout(showContent, remainingTime);
+  } else {
+	showContent(); // Ya pasó el tiempo mínimo, muestra el contenido ahora
+  }
+});
+

@@ -42,6 +42,27 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
+<div id="loading-screen">
+    <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="load">
+      <div>O</div>
+      <div>D</div>
+      <div>N</div>
+      <div>A</div>
+      <div>G</div>
+      <div>R</div>
+      <div>A</div>
+      <div>C</div>
+    </div>
+</div>
+
   <div id="cookie-consent" class="cookie-consent">
     <p>Usamos cookies para mejorar tu experiencia en nuestro sitio. ¿Aceptas nuestras cookies?</p>
     <button id="accept-cookies">Aceptar</button>
@@ -105,7 +126,7 @@
                     <div class="info-box">
                       <div class="info-box-content">
                           <p class="info-box-title">Correo</p>
-                          <p class="info-box-subtitle">infodmz@Dimarza.com</p>
+                          <p class="info-box-subtitle">info@dimarza.com</p>
                       </div>
                     </div>
                   </li>
@@ -118,10 +139,7 @@
                     </div>
                   </li>
                   <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="Contacto.html">Contactanos</a>
-                  </li>
-                  <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="reclutamiento.html">Postulate</a>
+                    <a class="btn btn-primary" href="pages/Contacto.html">Contactanos</a>
                   </li>
                 </ul><!-- Ul end -->
             </div><!-- header right end -->
@@ -153,27 +171,27 @@
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Corporación <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="about.html">Sobre nosotros</a></li>
-                            <li><a href="faq.html">Preguntas frecuentes</a></li>
+                            <li><a href="pages/about/about.html">Sobre nosotros</a></li>
+                            <li><a href="pages/about/faq.html">Preguntas frecuentes</a></li>
                           </ul>
                       </li>
               
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Proyectos<i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="projects.html">Todos los proyectos</a></li>
+                            <li><a href="pages/proyectos/projects.html">Todos los proyectos</a></li>
                           </ul>
                       </li>
               
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Noticias <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="Noticias.html">Todas las noticias</a></li>
+                            <li><a href="pages/noticia/Noticias.html">Todas las noticias</a></li>
                           </ul>
                       </li>
-                      <li class="nav-item"><a class="nav-link" href="reclutamiento.html">Reclutamiento</a></li>
+                      <li class="nav-item"><a class="nav-link" href="pages/reclutamiento.html">Reclutamiento</a></li>
                       
-                      <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+                      <li class="nav-item"><a class="nav-link" href="pages/Contacto.html">Contacto</a></li>
                     </ul>
                 </div>
               </nav>
@@ -181,17 +199,6 @@
           <!--/ Col end -->
         </div>
         <!--/ Row end -->
-
-        <div class="nav-search">
-          <span id="search"><i class="fa fa-search"></i></span>
-        </div><!-- Search end -->
-
-        <div class="search-block" style="display: none;">
-          <label for="search-field" class="w-100 mb-0">
-            <input type="text" class="form-control" id="search-field" placeholder="Busca rapida...">
-          </label>
-          <span class="search-close">&times;</span>
-        </div><!-- Site search end -->
     </div>
     <!--/ Container end -->
 
@@ -209,7 +216,7 @@
                 <h2 class="slide-title" data-animation-in="slideInLeft">10 años al servicio de las mineras</h2>
                 <h3 class="slide-sub-title" data-animation-in="slideInRight">Dimarza Corp. </h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                    <a href="Contacto.html" class="slider btn btn-primary border">Contactanos</a>
+                    <a href="pages/Contacto.html" class="slider btn btn-primary border">Contactanos</a>
                 </p>
               </div>
           </div>
@@ -226,7 +233,7 @@
                 <h3 class="slide-title" data-animation-in="fadeIn">Cuando el servicio importa</h3>
                 <h3 class="slide-sub-title" data-animation-in="slideInLeft">Tu eleccion importa</h3>
                 <p data-animation-in="slideInRight">
-                    <a href="Contacto.html" class="slider btn btn-primary border">Contactanos</a>
+                    <a href="pages/Contacto.html" class="slider btn btn-primary border">Contactanos</a>
                 </p>
               </div>
           </div>
@@ -242,8 +249,8 @@
                 <h2 class="slide-title" data-animation-in="slideInDown">Conozca a nuestros ingenieros</h2>
                 <h3 class="slide-sub-title" data-animation-in="fadeIn">Te ayudamos a impulsarte</h3>
                 <div data-animation-in="slideInLeft">
-                    <a href="Contacto.html" class="slider btn btn-primary" aria-label="Contacto-with-us">Contactanos</a>
-                    <a href="about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Saber mas</a>
+                    <a href="pages/" class="slider btn btn-primary" aria-label="Contacto-with-us">Contactanos</a>
+                    <a href="pages/about/about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Saber mas</a>
                 </div>
               </div>
           </div>
@@ -585,7 +592,7 @@
 
       <div class="col-12">
         <div class="general-btn text-center">
-          <a class="btn btn-primary" href="projects.html">Todos los proyectos</a>
+          <a class="btn btn-primary" href="pages/proyectos/projects.html">Todos los proyectos</a>
         </div>
       </div>
 
@@ -645,7 +652,7 @@
                 <h4 class="text-white mb-0">Mas informacion</h4>
                 <p class="text-white">reclutamiento@dimarza.com</p>
               </div>
-              <button class="responsive-button" onclick="window.location.href='reclutamiento.html'">Ir</button>
+              <button class="responsive-button" onclick="window.location.href='/pages/reclutamiento.html'">Ir</button>
               <style class="bt_reclu">
                 .responsive-button {
                   background-color: #b91f1f; /* Color de fondo */
@@ -695,7 +702,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="latest-post">
               <div class="latest-post-media">
-                <a href="Noticias.html" class="latest-post-img">
+                <a href="pages/noticia/Noticias.html" class="latest-post-img">
                     <img loading="lazy" class="img-fluid" src="images/logodmz.png" alt="img">
                 </a>
               </div>
@@ -755,7 +762,7 @@
     <!--/ Content row end -->
 
     <div class="general-btn text-center mt-4">
-        <a class="btn btn-primary" href="Noticias.html">Todas las noticias</a>
+        <a class="btn btn-primary" href="pages/noticia/Noticias.html">Todas las noticias</a>
     </div>
 
   </div>
@@ -796,11 +803,13 @@
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
             <h3 class="widget-title">Libro de reclamaciones</h3>
-            <ul class="list-arrow">
-              <a>Ingrese su reclamo o sugerencia</a>
-              <li><a href="htdocs.html">Ingrese aqui</a></li>
+            <a>Ingrese su reclamo o sugerencia</a>
+            <div class="bt_ldr">
+              <a href="https://www.ejemplo.com" target="_blank">
+                <img src="images/libreclam.png" alt="Botón Imagen" class="bt_ldr-img">
+              </a>
+            </div>
           </div><!-- Col end -->
-        </div><!-- Row end -->
       </div><!-- Container end -->
     </div><!-- Footer main end -->
 
@@ -818,9 +827,9 @@
           <div class="col-md-12">
             <div class="footer-menu text-center">
               <ul class="list-unstyled mb-0">
-                <li><a href="about.html">Acerca de</a></li>
-                <li><a href="faq.html">Preguntas frecuentes</a></li>
-                <li><a href="news-left-sidebar.html">Noticias</a></li>
+                <li><a href="pages/about/about.html">Acerca de</a></li>
+                <li><a href="pages/about/faq.html">Preguntas frecuentes</a></li>
+                <li><a href="pages/noticia/Noticias.html">Noticias</a></li>
               </ul>
             </div>
           </div>
@@ -863,9 +872,14 @@
   <script src="js/coqi.js"></script>
 
   </div><!-- Body inner end -->
-  <!-- Botón para activar el modo oscuro / claro -->
-  <div id="theme-toggle" class="btn btn-dark">
-    Modo Oscuro
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-toggle-checkbox" class="theme-toggle-checkbox">
+    <label for="theme-toggle-checkbox" class="theme-toggle-label">
+      <span class="theme-toggle-handle">
+        <span class="theme-toggle-icon theme-toggle-light"><i class="fas fa-sun"></i></span>
+        <span class="theme-toggle-icon theme-toggle-dark"><i class="fas fa-moon"></i></span>
+      </span>
+    </label>
   </div>
   </body>
 

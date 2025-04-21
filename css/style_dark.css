@@ -252,27 +252,103 @@ body, .navbar, .footer, .btn {
   color: #9a9a9a;
 }
 
-/* =====================
-   Theme Toggle Button
-====================== */
+/* =========================================
+   BOTÓN DE CAMBIO DE TEMA (ANIMACIÓN MEJORADA)
+========================================== */
 
-/* Estilo para el botón de cambio de tema */
-#theme-toggle {
+.theme-toggle {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  top: 22px; /* O ajusta según necesites */
+  right: 20px; /* O ajusta según necesites */
   z-index: 9999;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
 }
 
-#theme-toggle:hover {
-  background-color: #555;
+.theme-toggle-checkbox {
+  display: none; /* Oculta el checkbox real */
 }
+
+.theme-toggle-label {
+  display: block; /* Cambiado a block para contener la manija absoluta */
+  width: 60px;
+  height: 30px;
+  background-color: #444; /* Color base ligeramente más claro */
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative; /* Necesario para la manija absoluta */
+  transition: background-color 0.4s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+/* Modo claro: Color de fondo y resplandor */
+body:not(.dark-mode) .theme-toggle-label {
+  background-color: #ADD8E6; /* Azul claro para el día */
+  box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.5); /* Resplandor amarillo */
+}
+/* Modo oscuro: Color de fondo */
+body.dark-mode .theme-toggle-label {
+   background-color: #3a3d4f; /* Azul oscuro para la noche */
+   box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.2); /* Resplandor blanco sutil */
+}
+
+
+.theme-toggle-handle {
+  position: absolute;
+  top: 2px;  /* Espacio desde arriba */
+  left: 2px; /* Espacio inicial desde la izquierda */
+  width: 26px; /* Ancho de la manija (altura - 2*top) */
+  height: 26px;/* Alto de la manija (altura - 2*top) */
+  background-color: #f0f0f0; /* Color de la manija */
+  border-radius: 50%; /* Hace la manija circular */
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Transición suave con rebote */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Asegura que los iconos no se salgan */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Estilo base de los iconos dentro de la manija */
+.theme-toggle-icon {
+  font-size: 16px; /* Tamaño ajustado */
+  position: absolute; /* Para superponerlos */
+  transition: opacity 0.3s ease, transform 0.4s ease; /* Transición suave */
+}
+
+/* Icono Sol (Modo Claro - inicial) */
+.theme-toggle-light {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #e0d20e; /* Color dorado */
+}
+
+/* Icono Luna (Modo Oscuro - inicial) */
+.theme-toggle-dark {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.8); /* Rotado y escalado inicialmente */
+  color: #fffbfb; /* Color blanco/gris claro */
+}
+
+
+/* --- ESTADOS CUANDO EL CHECKBOX ESTÁ ACTIVADO (Modo Oscuro) --- */
+
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-handle {
+  /* Mueve la manija a la derecha: ancho_label - ancho_manija - espacio_izquierdo */
+  transform: translateX(calc(60px - 26px - 4px)); 
+  background-color: #555; /* Manija más oscura en modo noche */
+}
+
+/* Oculta y rota el sol */
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-light {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.8);
+}
+
+/* Muestra y rota la luna */
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-dark {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
 
 /* =====================
    Comments Section
@@ -387,7 +463,5 @@ body, .navbar, .footer, .btn {
 .shuffle-btn-group label:hover {
   background-color: #d32f2f !important; /* Cambio de color al pasar el ratón */
 }
-
-
 
 

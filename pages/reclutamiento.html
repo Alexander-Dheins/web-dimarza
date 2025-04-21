@@ -15,23 +15,26 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="images/icondmz.png">
+  <link rel="icon" type="image/png" href="/images/icondmz.png">
 
   <!-- CSS
 ================================================== -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="/plugins/fontawesome/css/all.min.css">
   <!-- Animation -->
-  <link rel="stylesheet" href="plugins/animate-css/animate.css">
+  <link rel="stylesheet" href="/plugins/animate-css/animate.css">
   <!-- slick Carousel -->
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  <link rel="stylesheet" href="/plugins/slick/slick-theme.css">
   <!-- Colorbox -->
-  <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
+  <link rel="stylesheet" href="/plugins/colorbox/colorbox.css">
   <!-- Template styles-->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style_dark.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </head>
 <body>
@@ -40,12 +43,14 @@
     <div id="top-bar" class="top-bar">
         <div class="container">
           <div class="row">
-              <div class="col-lg-8 col-md-8">
-                <ul class="top-info text-center text-md-left">
-                    <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">Mza. D Lote. 4 Parque Industrial I Etapa - Cerro Colorado</p>
-                    </li>
-                </ul>
-              </div>
+            <div class="col-lg-8 col-md-8">
+              <ul class="top-info text-center text-md-left">
+                  <li>
+                      <img src="/images/ubicacion.gif" alt="Ubicación" style="width: 20px; height: 25px; margin-right: 8px;">
+                      <p class="info-text">Mza. D Lote. 4 Parque Industrial I Etapa - Cerro Colorado</p>
+                  </li>
+              </ul>
+          </div>
               <!--/ Top info end -->
   
               <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
@@ -80,21 +85,13 @@
       <div class="logo-area">
           <div class="row align-items-center">
             <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
-                <a class="d-block" href="index.html">
-                  <img loading="lazy" src="images/logodmz.png" alt="Constra">
+                <a class="d-block" href="/index.html">
+                  <img loading="lazy" src="/images/logodmz.png" alt="Constra">
                 </a>
             </div><!-- logo end -->
   
             <div class="col-lg-9 header-right">
                 <ul class="top-info-box">
-                  <li>
-                    <div class="info-box">
-                      <div class="info-box-content">
-                          <p class="info-box-title">Llamanos</p>
-                          <p class="info-box-subtitle">(+51) 9876543231</p>
-                      </div>
-                    </div>
-                  </li>
                   <li>
                     <div class="info-box">
                       <div class="info-box-content">
@@ -112,7 +109,7 @@
                     </div>
                   </li>
                   <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="Contacto.html">Contactanos</a>
+                    <a class="btn btn-primary" href="/pages/Contacto.html">Contactanos</a>
                   </li>
                 </ul><!-- Ul end -->
             </div><!-- header right end -->
@@ -136,34 +133,34 @@
                       <li class="nav-item dropdown active">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Inicio <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li class="active"><a href="index.html">Dimarza</a></li>
-                            <li><a href="index-2.html">Dimarza Spa.</a></li>
+                            <li class="active"><a href="/index.html">Dimarza</a></li>
+                            <li><a href="/index-2.html">Dimarza Spa.</a></li>
                           </ul>
                       </li>
 
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Corporación <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="about.html">Sobre nosotros</a></li>
-                            <li><a href="faq.html">Preguntas frecuentes</a></li>
+                            <li><a href="/pages/about/about.html">Sobre nosotros</a></li>
+                            <li><a href="/pages/about/faq.html">Preguntas frecuentes</a></li>
                           </ul>
                       </li>
               
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Proyectos <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="projects.html">Todos los proyectos</a></li>
+                            <li><a href="/pages/proyectos/projects.html">Todos los proyectos</a></li>
                           </ul>
                       </li>
               
                       <li class="nav-item dropdown">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Noticias <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="Noticias.html">Todas las noticias</a></li>
+                            <li><a href="/pages/noticia/Noticias.html">Todas las noticias</a></li>
                           </ul>
                       </li>
               
-                      <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/pages/Contacto.html">Contacto</a></li>
                     </ul>
                 </div>
               </nav>
@@ -171,25 +168,13 @@
           <!--/ Col end -->
         </div>
         <!--/ Row end -->
-
-        <div class="nav-search">
-          <span id="search"><i class="fa fa-search"></i></span>
-        </div><!-- Search end -->
-
-        <div class="search-block" style="display: none;">
-          <label for="search-field" class="w-100 mb-0">
-            <input type="text" class="form-control" id="search-field" placeholder="Busca rapida...">
-          </label>
-          <span class="search-close">&times;</span>
-        </div><!-- Site search end -->
     </div>
     <!--/ Container end -->
-
   </div>
   <!--/ Navigation end -->
 </header>
 <!--/ Header end -->
-<div id="banner-area" class="banner-area" style="background-image:url(images/reclut/banner.jpg)">
+<div id="banner-area" class="banner-area" style="background-image:url(/images/reclut/banner.jpg)">
   <div class="banner-text">
     <div class="container">
         <div class="row">
@@ -198,7 +183,7 @@
                 <h1 class="banner-title">Nuestras reclutadoras</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                      <li class="breadcrumb-item"><a href="/index.html">Inicio</a></li>
                       <li class="breadcrumb-item"><a href="#">Corporación</a></li>
                       <li class="breadcrumb-item active" aria-current="page">Nuestro equipo</li>
                     </ol>
@@ -225,7 +210,7 @@
       <div class="col-lg-3 col-sm-6 mb-5">
           <div class="ts-team-wrapper">
               <div class="team-img-wrapper">
-                  <img loading="lazy" src="images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
+                  <img loading="lazy" src="/images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
               </div>
               <div class="ts-team-content-classic">
                   <h3 class="ts-name">Katherine</h3>
@@ -257,7 +242,7 @@
       <div class="col-lg-3 col-sm-6 mb-5">
           <div class="ts-team-wrapper">
               <div class="team-img-wrapper">
-                  <img loading="lazy" src="images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
+                  <img loading="lazy" src="/images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
               </div>
               <div class="ts-team-content-classic">
                   <h3 class="ts-name">Nikol</h3>
@@ -290,7 +275,7 @@
       <div class="col-lg-3 col-sm-6 mb-5">
         <div class="ts-team-wrapper">
             <div class="team-img-wrapper">
-                <img loading="lazy" src="images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
+                <img loading="lazy" src="/images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
             </div>
             <div class="ts-team-content-classic">
                 <h3 class="ts-name">Elizabeth</h3>
@@ -323,7 +308,7 @@
     <div class="col-lg-3 col-sm-6 mb-5">
       <div class="ts-team-wrapper">
           <div class="team-img-wrapper">
-              <img loading="lazy" src="images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
+              <img loading="lazy" src="/images/reclut/testimonio.jpg" class="img-fluid" alt="team-img">
           </div>
           <div class="ts-team-content-classic">
               <h3 class="ts-name">Ernesto</h3>
@@ -352,7 +337,11 @@
       </div>
   </div><!-- Col end -->
   <h2 class="c-bot">¿Necesitas postular y pasar por una evaluacion anticipada?</h2>
-  <button class="bt-reclutchat">CHATEAR CON UN BOT</button>
+  <div class="button-container">
+    <a href="/botdmz_python.html">
+      <button class="bt-reclutchat">CHATEAR CON UN BOT</button>
+    </a>
+  </div>
 </section><!-- Main container end -->
 
 
@@ -363,7 +352,7 @@
       <div class="row justify-content-between">
         <div class="col-lg-4 col-md-6 footer-widget footer-about">
           <h3 class="widget-title">Sobre nosotros</h3>
-          <img loading="lazy" class="footer-logo" src="images/logodmz.png" alt="">
+          <img loading="lazy" class="footer-logo" src="/images/logodmz.png" alt="">
           <p>En Dimarza, nos dedicamos a ofrecer Services mineros de alta calidad, abarcando desde la exploración inicial hasta la producción y el cierre 
             de minas. Con más de 10 años de experiencia en la industria.</p>
           <div class="footer-social">
@@ -390,9 +379,11 @@
 
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
           <h3 class="widget-title">Libro de reclamaciones</h3>
-          <ul class="list-arrow">
-            <a>Ingrese su reclamo o sugerencia</a>
-            <li><a href="htdocs.html">Ingrese aqui</a></li>
+          <a>Ingrese su reclamo o sugerencia</a>
+          <div class="bt_ldr">
+            <a href="https://www.ejemplo.com" target="_blank">
+              <img src="/images/libreclam.png" alt="Botón Imagen" class="bt_ldr-img">
+            </a>
         </div><!-- Col end -->
       </div><!-- Row end -->
     </div><!-- Container end -->
@@ -440,28 +431,41 @@
   ================================================== -->
 
   <!-- initialize jQuery Library -->
-  <script src="plugins/jQuery/jquery.min.js"></script>
+  <script src="/plugins/jQuery/jquery.min.js"></script>
   <!-- Bootstrap jQuery -->
-  <script src="plugins/bootstrap/bootstrap.min.js" defer></script>
+  <script src="/plugins/bootstrap/bootstrap.min.js" defer></script>
   <!-- Slick Carousel -->
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/slick/slick-animation.min.js"></script>
+  <script src="/plugins/slick/slick.min.js"></script>
+  <script src="/plugins/slick/slick-animation.min.js"></script>
   <!-- Color box -->
-  <script src="plugins/colorbox/jquery.colorbox.js"></script>
+  <script src="/plugins/colorbox/jquery.colorbox.js"></script>
   <!-- shuffle -->
-  <script src="plugins/shuffle/shuffle.min.js" defer></script>
+  <script src="/plugins/shuffle/shuffle.min.js" defer></script>
 
 
   <!-- Google Map API Key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
   <!-- Google Map Plugin-->
-  <script src="plugins/google-map/map.js" defer></script>
+  <script src="/plugins/google-map/map.js" defer></script>
 
   <!-- Template custom -->
-  <script src="js/script.js"></script>
-  <script src="js/tercon.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/tercon.js"></script>
 
   </div><!-- Body inner end -->
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-toggle-checkbox" class="theme-toggle-checkbox">
+    <label for="theme-toggle-checkbox" class="theme-toggle-label">
+      <span class="theme-toggle-icon theme-toggle-light">
+        <i class="fas fa-sun"></i>
+      </span>
+      <span class="theme-toggle-icon theme-toggle-dark">
+        <i class="fas fa-moon"></i>
+      </span>
+    </label>
+  </div>
+
   </body>
 
   </html>

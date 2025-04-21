@@ -1,55 +1,36 @@
 <?php
-// Configuración de cabeceras para evitar problemas de CORS
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Content-Type: application/json');
+// Conexión a la base de datos
+$host = 'localhost';  // Dirección del servidor MySQL
+$dbname = 'contactos'; // Nombre de la base de datos
+$username = 'root';    // Usuario de MySQL
+$password = '';        // Contraseña de MySQL
 
-// Verificar que sea una petición POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los datos del formulario
-    $nombre = isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : '';
-    $correo = isset($_POST['correo']) ? filter_var($_POST['correo'], FILTER_SANITIZE_EMAIL) : '';
-    $asunto = isset($_POST['asunto']) ? htmlspecialchars($_POST['asunto']) : '';
-    $mensaje = isset($_POST['mensaje']) ? htmlspecialchars($_POST['mensaje']) : '';
-    
-    // Validación básica
-    if (empty($nombre) || empty($correo) || empty($asunto) || empty($mensaje)) {
-        echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios']);
-        exit;
-    }
-    
-    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(['success' => false, 'message' => 'El correo electrónico no es válido']);
-        exit;
-    }
-    
-    // Configuración del correo
-    $destinatario = "tucorreo@ejemplo.com"; // ¡CAMBIA ESTO POR TU CORREO!
-    $asuntoEmail = "Nuevo mensaje de contacto: $asunto";
-    
-    // Construir el cuerpo del correo
-    $cuerpoEmail = "Has recibido un nuevo mensaje desde el formulario de contacto.\n\n";
-    $cuerpoEmail .= "Nombre: $nombre\n";
-    $cuerpoEmail .= "Correo: $correo\n";
-    $cuerpoEmail .= "Asunto: $asunto\n\n";
-    $cuerpoEmail .= "Mensaje:\n$mensaje\n";
-    
-    // Cabeceras del correo
-    $cabeceras = "From: $correo\r\n";
-    $cabeceras .= "Reply-To: $correo\r\n";
-    
-    // Enviar el correo
-    $envioExitoso = mail($destinatario, $asuntoEmail, $cuerpoEmail, $cabeceras);
-    
-    // Devolver respuesta
-    if ($envioExitoso) {
-        echo json_encode(['success' => true, 'message' => 'Mensaje enviado correctamente']);
+// Crear la conexión
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Verificar si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtener los valores del formulario
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    $asunto = $_POST['asunto'];
+    $mensaje = $_POST['mensaje'];
+
+    // Preparar la consulta SQL para insertar los datos en la tabla
+    $sql = "INSERT INTO formulario_contacto (nombre, correo, asunto, mensaje)
+            VALUES ('$nombre', '$correo', '$asunto', '$mensaje')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Mensaje enviado con éxito"; // Esta es la respuesta que se maneja en el JS
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error al enviar el mensaje']);
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} else {
-    // No es una petición POST
-    echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+
+    $conn->close();
 }
 ?>

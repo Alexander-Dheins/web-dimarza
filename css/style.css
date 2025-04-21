@@ -1,4 +1,4 @@
-/*!------------------------------------------------------------------
+/*------------------------------------------------------------------
 [MAIN STYLESHEET]
 
 Template Name: Constra - Desarrollado por Alexander Dheins
@@ -24,6 +24,185 @@ p {
   line-height: 26px;
   font-size: 15px;
 }
+
+/* --- CSS para la Pantalla de Carga --- */
+
+#loading-screen {
+  position: fixed; /* Fija la pantalla de carga en la ventana */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff; /* Fondo blanco (ajusta si prefieres otro color) */
+  z-index: 99999; /* Asegura que esté por encima de todo */
+  display: flex; /* Flexbox para centrar contenido si es necesario */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Apila spinner y texto verticalmente */
+}
+
+/* Estilos originales del Spinner (con rutas de imagen corregidas) */
+.spinner {
+  position: relative; /* Cambiado de absolute para flujo normal dentro de #loading-screen */
+  width: 70.4px;
+  height: 70.4px;
+  --clr: lime;
+  --clr-alpha: transparent;
+  animation: spinner 3s infinite ease;
+  transform-style: preserve-3d;
+  /* top, left, margin-left, margin-top eliminados para centrado con flexbox */
+  margin-bottom: 80px; /* Espacio entre el spinner y el texto "CARGANDO" */
+}
+
+.spinner > div {
+  background-color: var(--clr-alpha);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border: 3.5px solid black; /* Bordes de color negro */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra gris oscuro */
+}
+
+/* Rutas corregidas asumiendo que icondmz.png está en la carpeta 'images' en la raíz */
+.spinner div:nth-of-type(1) {
+  transform: translateZ(-35.2px) rotateY(180deg);
+  background-image: url('../images/icondmz.png'); /* Ruta corregida */
+  background-size: cover;
+}
+
+.spinner div:nth-of-type(2) {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+  background-image: url('../images/icondmz.png'); /* Ruta corregida */
+  background-size: cover;
+}
+
+.spinner div:nth-of-type(3) {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+  background-image: url('../images/icondmz.png'); /* Ruta corregida */
+  background-size: cover;
+}
+
+.spinner div:nth-of-type(4) {
+  transform: rotateX(90deg) translateY(-50%);
+  transform-origin: top center;
+  background-image: url('../images/icondmz.png'); /* Ruta corregida */
+  background-size: cover;
+}
+
+.spinner div:nth-of-type(5) {
+  transform: rotateX(-90deg) translateY(50%);
+  transform-origin: bottom center;
+  background-image: url('../images/icondmz.png'); /* Ruta corregida */
+  background-size: cover;
+}
+
+.spinner div:nth-of-type(6) {
+  transform: translateZ(35.2px);
+  background-image: url('../images/icondmz.png'); /* Ruta corregida */
+  background-size: cover;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+  }
+  50% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+  }
+  100% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+  }
+}
+
+/* Estilos originales del texto de carga */
+#load {
+  position: relative; /* Cambiado de absolute */
+  width: 600px;
+  max-width: 90%; /* Asegura que no se desborde en pantallas pequeñas */
+  height: 36px;
+  /* top, left, margin-left eliminados */
+  overflow: visible;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  margin: 0 auto; /* Centra el div #load */
+}
+
+#load div {
+  position: absolute;
+  width: 20px; /* Considera ajustar esto si las letras se solapan */
+  height: 36px;
+  opacity: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  animation: move 3s linear infinite;
+  -o-animation: move 3s linear infinite;
+  -moz-animation: move 3s linear infinite;
+  -webkit-animation: move 3s linear infinite;
+  transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  color: #000000;
+}
+
+/* ... (resto de tus estilos #load div:nth-child y @keyframes move) ... */
+
+#load div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#load div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+#load div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+#load div:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+#load div:nth-child(6) {
+  animation-delay: 1s;
+}
+
+#load div:nth-child(7) {
+  animation-delay: 1.2s;
+}
+
+#load div:nth-child(8) {
+  animation-delay: 1.4s;
+}
+
+@keyframes move {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  35% {
+    left: 41%;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  65% {
+    left: 59%;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+/* --- Fin CSS Pantalla de Carga --- */
 
 
 /* cookis style
@@ -897,7 +1076,7 @@ ul.top-info-box li {
 
 ul.top-info-box li:last-child {
   margin-right: 0;
-  padding-right: ;
+  padding-right: 0;
   border-right: 0;
 }
 
@@ -933,31 +1112,7 @@ ul.top-info-box li .info-box .info-box-subtitle {
   color: #111;
 }
 
-/*-- Search start --*/
-ul.top-info-box > li.nav-search {
-  cursor: pointer;
-  padding-left: 30px;
-  margin-left: 30px;
-}
 
-ul.top-info-box > li.nav-search:before {
-  position: absolute;
-  content: '';
-  background: #ddd;
-  left: 0;
-  width: 1px;
-  height: 40px;
-  top: 50%;
-  margin-top: -10px;
-}
-
-ul.top-info-box > li.nav-search i {
-  font-size: 20px;
-  top: 10px;
-  position: relative;
-  cursor: pointer;
-  color: #999;
-}
 
 /* Main navigation */
 .navbar-toggler {
@@ -1281,20 +1436,11 @@ ul.navbar-nav > li > a {
 }
 
 /* Contactanos */
+/* Estilos generales del formulario y las alertas */
 .container-contact {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.568);
-  width: 100%;
   max-width: 600px;
-  padding: 30px;
-  margin: 30px auto; /* Añade margen superior e inferior, y centra horizontalmente */
-}
-
-h2 {
-  color: #e62929;
-  text-align: center;
-  margin-bottom: 30px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .form-group {
@@ -1303,87 +1449,54 @@ h2 {
 
 label {
   display: block;
-  margin-bottom: 8px;
-  color: #333;
-  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 input, textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #e1e1e1;
-  border-radius: 5px;
+  padding: 10px;
   font-size: 16px;
-  transition: border-color 0.3s;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #e62929;
-  box-shadow: 0 0 0 2px rgba(230, 41, 41, 0.2);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 150px;
+  margin-top: 5px;
 }
 
 button {
-  background-color: #e62929;
+  padding: 10px 20px;
+  background-color: #4CAF50;
   color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 24px;
   font-size: 16px;
-  font-weight: 600;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
-  display: block;
-  margin-left: auto;
 }
 
 button:hover {
-  background-color: #c41f1f;
+  background-color: #45a049;
 }
 
 .alert {
   padding: 15px;
-  border-radius: 5px;
   margin-bottom: 20px;
-  display: none;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 .alert-success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  background-color: #4CAF50;
+  color: white;
 }
 
 .alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  background-color: #f44336;
+  color: white;
 }
 
 .form-required {
-  color: #e62929;
-}
-
-.form-invalid {
-  border-color: #e62929 !important;
+  color: red;
 }
 
 .error-message {
-  color: #e62929;
+  color: red;
   font-size: 14px;
-  margin-top: 5px;
   display: none;
-}
-
-@media (max-width: 480px) {
-  .container {
-      padding: 20px;
-  }
 }
 
 /* Table of Content
@@ -3073,7 +3186,10 @@ img.testimonial-thumb {
 .ts-team-content-classic p {
   margin: 5px 0;
   font-size: 0.9em;
-  color: #555;
+  color: #000000;
+}
+.dark-mode .ts-team-content-classic p {
+  color: #ffffff; /* Color blanco para modo oscuro */
 }
 
 .btn-primary {
@@ -3144,23 +3260,29 @@ img.testimonial-thumb {
 
 /*-- Boton de chat bot reclutamiento  --*/
 
+/* Contenedor del botón */
+.button-container {
+  display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin: 20px 0; /* Espaciado superior e inferior */
+  height: auto; /* Ajusta la altura automáticamente según el contenido */
+}
+
+/* Botón */
 .bt-reclutchat {
-  background-color: #099c09; /* Color de fondo rojo */
-  color: white; /* Color del texto */
+  background-color: #f0ec10; /* Color de fondo */
+  color: rgb(0, 0, 0); /* Color del texto */
   padding: 15px 30px; /* Espaciado interno */
   border: none; /* Sin borde */
   border-radius: 5px; /* Esquinas redondeadas */
   font-size: 16px; /* Tamaño de la fuente */
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  height: 100%;
 }
 
 .bt-reclutchat:hover {
-  background-color: #000000;
+  background-color: #be0e0e;
 }
 
 
@@ -3756,3 +3878,30 @@ label {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* =====================
+   Boton de imagen de reclamación
+====================== */
+
+/* Estilos para el contenedor del botón de imagen con la clase 'bt_ldr' */
+/* Estilos para el contenedor del botón de imagen con la clase 'bt_ldr' */
+.bt_ldr {
+  position: relative; /* Ajustamos para que esté dentro del div */
+ 
+  align-items: center;
+  margin-top: 15px; /* Agregamos un margen para separar del texto */
+}
+
+/* Estilos para la imagen dentro del botón con la clase 'bt_ldr-img' */
+.bt_ldr-img {
+  width: 100px; /* Tamaño de la imagen */
+  height: 100px; /* Asegúrate de que la imagen tenga un tamaño adecuado */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+}
+
+/* Efecto cuando el mouse pasa sobre la imagen */
+.bt_ldr-img:hover {
+  transform: scale(1.1); /* Agranda la imagen cuando se pasa el ratón */
+  box-shadow: 0 0 15px 5px rgba(202, 45, 6, 0.6); /* Brillo amarillo al pasar el ratón */
+}
