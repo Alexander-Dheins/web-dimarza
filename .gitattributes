@@ -1,2 +1,44 @@
-# Auto detect text files and perform LF normalization
 * text=auto
+*.html text eol=crlf
+*.css text eol=crlf
+*.js text eol=crlf
+*.ts text eol=crlf
+*.json text eol=crlf
+*.md text eol=crlf
+*.php text eol=crlf
+*.xml text eol=crlf
+*.yml text eol=crlf
+*.yaml text eol=crlf
+*.txt text 
+*.sh text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.png binary eol=crlf
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.css binary
+*.js binary
+*.ts binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.mp4 binary
+*.mp3 binary
+*.wav binary
+*.txt binary
+*.less binary
+*.scss binary
+*.sass binary
+*.map binary

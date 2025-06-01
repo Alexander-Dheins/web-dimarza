@@ -1,0 +1,443 @@
+/* CSS AISLADO PARA SISTEMA INTEGRADO DE GESTIÓN */
+/* Prefijo: sig- para evitar conflictos */
+
+.sig-header {
+    background: linear-gradient(135deg, #113683 0%, #1e4a99 100%);
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.sig-header h1 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.sig-breadcrumb {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sig-breadcrumb-path {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.sig-breadcrumb-item {
+    cursor: pointer;
+    color: #113683;
+}
+
+.sig-breadcrumb-item:hover {
+    text-decoration: underline;
+}
+
+.sig-breadcrumb-separator {
+    color: #ccc;
+}
+
+.sig-search-container {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sig-search-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sig-search-box input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.sig-search-box button {
+    padding: 8px 16px;
+    background: #113683;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sig-search-box button:hover {
+    background: #0d2a5c;
+}
+
+.sig-explorer-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    height: 600px;
+}
+
+/* Panel Izquierdo - Árbol de Navegación */
+.sig-navigation-panel {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.sig-nav-header {
+    background: #b91f1f;
+    color: white;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.sig-nav-tree {
+    padding: 10px 0;
+    overflow-y: auto;
+    height: calc(100% - 50px);
+}
+
+.sig-nav-item {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.sig-nav-item:hover {
+    background: #f8f9fa;
+    color: #113683;
+}
+
+.sig-nav-item.active {
+    background: #113683;
+    color: white;
+}
+
+.sig-nav-item i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Panel Derecho - Contenido */
+.sig-content-panel {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sig-content-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sig-content-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.sig-view-options {
+    display: flex;
+    gap: 10px;
+}
+
+.sig-view-btn {
+    padding: 6px 12px;
+    background: #e9ecef;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.sig-view-btn.active {
+    background: #113683;
+    color: white;
+}
+
+.sig-content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Vista de Lista */
+.sig-list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sig-folder-item, .sig-file-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.sig-folder-item:hover, .sig-file-item:hover {
+    background: #f8f9fa;
+    border-color: #113683;
+    transform: translateX(2px);
+}
+
+.sig-item-icon {
+    margin-right: 12px;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.sig-folder-item .sig-item-icon {
+    color: #ffd700;
+}
+
+.sig-file-item .sig-item-icon {
+    color: #333;
+}
+
+.sig-file-item .sig-item-icon .fa-file-pdf {
+    color: #dc3545;
+}
+
+.sig-file-item .sig-item-icon .fa-file-excel {
+    color: #28a745;
+}
+
+.sig-file-item .sig-item-icon .fa-file-word {
+    color: #007bff;
+}
+
+.sig-file-item .sig-item-icon .fa-file-powerpoint {
+    color: #fd7e14;
+}
+
+.sig-item-info {
+    flex: 1;
+}
+
+.sig-item-name {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.sig-item-details {
+    font-size: 12px;
+    color: #666;
+}
+
+.sig-item-actions {
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sig-folder-item:hover .sig-item-actions,
+.sig-file-item:hover .sig-item-actions {
+    opacity: 1;
+}
+
+.sig-action-btn {
+    padding: 4px 8px;
+    background: #113683;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background 0.3s;
+}
+
+.sig-action-btn:hover {
+    background: #0d2a5c;
+}
+
+.sig-action-btn.download {
+    background: #28a745;
+}
+
+.sig-action-btn.download:hover {
+    background: #1e7e34;
+}
+
+/* Vista de Cuadrícula */
+.sig-grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.sig-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+    text-align: center;
+}
+
+.sig-grid-item:hover {
+    background: #f8f9fa;
+    border-color: #113683;
+    transform: translateY(-2px);
+}
+
+.sig-grid-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.sig-grid-item.folder .sig-grid-icon {
+    color: #ffd700;
+}
+
+.sig-grid-item.file .sig-grid-icon {
+    color: #dc3545;
+}
+
+.sig-grid-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    word-break: break-word;
+}
+
+/* Estado Vacío */
+.sig-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.sig-empty-state i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.sig-empty-state h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Loading State */
+.sig-loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.sig-loading i {
+    font-size: 24px;
+    animation: sig-spin 1s linear infinite;
+}
+
+@keyframes sig-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sig-explorer-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .sig-navigation-panel {
+        height: 300px;
+        margin-bottom: 20px;
+    }
+
+    .sig-content-panel {
+        height: 500px;
+    }
+
+    .sig-grid-view {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+}
+
+/* Información SIG */
+.sig-info {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sig-info h3 {
+    color: #113683;
+    margin-bottom: 15px;
+}
+
+.sig-update {
+    color: #dc3545;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sig-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.sig-stat-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.sig-stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #113683;
+}
+
+.sig-stat-label {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}

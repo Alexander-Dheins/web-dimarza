@@ -1,0 +1,165 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('ruta/a/tu/imagen.jpg'); 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #4CAF50;
+    text-align: center;
+}
+
+/* Mejoras en la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+th {
+    background-color: #a70808;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) td {
+    background-color: #f4f4f4;
+}
+
+tr:hover td {
+    background-color: #e8f5e9;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos mejorados para los enlaces dentro de la tabla */
+td a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #d21919;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+td a:hover {
+    background-color: #000000;
+    transform: scale(1.05);
+}
+
+
+
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}       
+.login-email {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Estilos del input */
+.input-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #6e7dff;
+    box-shadow: 0 0 10px rgba(110, 125, 255, 0.4);
+}
+
+.input-group input::placeholder {
+    color: #bbb;
+}
+
+/* Estilos del botón */
+.btn {
+    padding: 1rem;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #ac1010;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Texto de registro */
+.login-register-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.login-register-text a {
+    color: #ac1010;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-register-text a:hover {
+    color: #000000;
+}
+        
+
+
+

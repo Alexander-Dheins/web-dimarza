@@ -1,0 +1,443 @@
+// Funcionalidad principal para el clon de Osinergmin
+document.addEventListener('DOMContentLoaded', function() {
+    initializeMobileMenu();
+    initializeExpandableProcedures();
+    initializeScrollToTop();
+    initializeSearch();
+    initializeCategoriesToggle();
+});
+
+// Funcionalidad del menú móvil
+function initializeMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            body.style.overflow = 'hidden';
+        });
+    }
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            body.style.overflow = '';
+        });
+    }
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', function(e) {
+        if (mobileMenu.classList.contains('active') &&
+            !mobileMenu.contains(e.target) &&
+            !mobileMenuBtn.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+
+    // Cerrar menú al cambiar tamaño de ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 991) {
+            mobileMenu.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+}
+
+// Funcionalidad para expandir/contraer procedimientos
+function initializeExpandableProcedures() {
+    const procedureItems = document.querySelectorAll('.subcarpeta-listado');
+
+    procedureItems.forEach(function(item) {
+        const title = item.querySelector('.subcarpeta-listad-title');
+        const content = item.querySelector('.subcarpeta-content');
+        const icon = item.querySelector('.icon-expand');
+
+        if (title && content) {
+            title.addEventListener('click', function() {
+                const isExpanded = item.classList.contains('expanded');
+
+                // Cerrar todos los otros procedimientos
+                procedureItems.forEach(function(otherItem) {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('expanded');
+                        const otherContent = otherItem.querySelector('.subcarpeta-content');
+                        if (otherContent) {
+                            otherContent.style.display = 'none';
+                        }
+                    }
+                });
+
+                // Toggle del procedimiento actual
+                if (isExpanded) {
+                    item.classList.remove('expanded');
+                    content.style.display = 'none';
+                } else {
+                    item.classList.add('expanded');
+                    content.style.display = 'block';
+                    content.classList.add('slide-down');
+
+                    // Añadir contenido de ejemplo si está vacío
+                    if (content.innerHTML.trim() === '' || content.innerHTML.includes('Aquí irían')) {
+                        addSampleContent(content, title.textContent);
+                    }
+                }
+            });
+        }
+    });
+}
+
+// Añadir contenido de ejemplo a los procedimientos
+function addSampleContent(contentDiv, titleText) {
+    const sampleDocuments = [
+        'Procedimiento de Gestión Documental',
+        'Manual de Procedimientos',
+        'Instructivo de Operaciones',
+        'Guía de Implementación',
+        'Protocolo de Seguimiento'
+    ];
+
+    let contentHTML = '<ul style="list-style: none; margin: 0; padding: 0;">';
+
+    sampleDocuments.forEach(function(doc, index) {
+        contentHTML += `
+            <li style="margin-bottom: 8px;">
+                <a href="#" style="color: #113683; text-decoration: none; font-size: 13px; display: flex; align-items: center;">
+                    <i class="fa fa-file-pdf" style="margin-right: 8px; color: #dc3545;"></i>
+                    ${titleText.split('.')[0]}.${index + 1} ${doc}
+                </a>
+            </li>
+        `;
+    });
+
+    contentHTML += '</ul>';
+    contentDiv.innerHTML = contentHTML;
+
+    // Añadir event listeners a los links de documentos
+    const docLinks = contentDiv.querySelectorAll('a');
+    docLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDocumentModal(this.textContent);
+        });
+    });
+}
+
+// Modal para mostrar información del documento
+function showDocumentModal(documentName) {
+    const modalHTML = `
+        <div id="document-modal" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+            <div style="
+                background: white;
+                padding: 30px;
+                border-radius: 8px;
+                max-width: 500px;
+                width: 90%;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            ">
+                <h3 style="color: #113683; margin-bottom: 20px;">Documento Seleccionado</h3>
+                <p style="margin-bottom: 20px; color: #666;">${documentName}</p>
+                <p style="margin-bottom: 25px; font-size: 14px; color: #999;">
+                    Este es un ejemplo de cómo se vería la funcionalidad de descarga de documentos.
+                </p>
+                <button onclick="closeDocumentModal()" style="
+                    background: #113683;
+                    color: white;
+                    border: none;
+                    padding: 10px 25px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                ">Cerrar</button>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+// Cerrar modal de documento
+function closeDocumentModal() {
+    const modal = document.getElementById('document-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+// Funcionalidad del botón scroll to top
+function initializeScrollToTop() {
+    const scrollBtn = document.getElementById('scrollUp');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollBtn.classList.add('show');
+        } else {
+            scrollBtn.classList.remove('show');
+        }
+    });
+
+    scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Funcionalidad de búsqueda
+function initializeSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.querySelector('button[type="button"]');
+    const searchForm = searchInput ? searchInput.closest('form') : null;
+
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                buscarClick();
+            }
+        });
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            buscarClick();
+        });
+    }
+
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            buscarClick();
+        });
+    }
+}
+
+// Función de búsqueda
+function buscarClick() {
+    const searchInput = document.getElementById('search-input');
+    if (!searchInput) return;
+
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    if (!searchTerm) return;
+
+    const sections = document.querySelectorAll('.content-section');
+    let results = [];
+
+    sections.forEach(section => {
+        const sectionTitleElem = section.querySelector('h3');
+        const sectionTitle = sectionTitleElem ? sectionTitleElem.textContent : 'Sin categoría';
+        const items = section.querySelectorAll('.subcarpeta-listado');
+
+        items.forEach(item => {
+            const titleElem = item.querySelector('.subcarpeta-listad-title h4');
+            const title = titleElem ? titleElem.textContent : '';
+            if (title.toLowerCase().includes(searchTerm)) {
+                results.push({
+                    category: sectionTitle,
+                    title: title,
+                    element: item
+                });
+            }
+        });
+    });
+
+    showSearchResults(results, searchTerm);
+}
+
+// Función para mostrar los resultados
+function showSearchResults(results, searchTerm) {
+    const resultsHTML = `
+        <div id="search-results" class="search-results-modal">
+            <div class="search-results-content">
+                <div class="search-header">
+                    <h3>Resultados de búsqueda</h3>
+                    <span class="close-search" onclick="closeSearchResults()">&times;</span>
+                </div>
+                <div class="search-term">
+                    <p>Término buscado: "${searchTerm}"</p>
+                </div>
+                <div class="results-list">
+                    ${results.length ? 
+                        results.map(result => `
+                            <div class="result-item">
+                                <div class="result-category">${result.category}</div>
+                                <div class="result-title">${result.title}</div>
+                            </div>
+                        `).join('') 
+                        : '<p class="no-results">No se encontraron resultados</p>'
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="search-overlay" onclick="closeSearchResults()"></div>
+    `;
+
+    // Eliminar resultados anteriores si existen
+    closeSearchResults();
+    
+    // Agregar nuevos resultados
+    document.body.insertAdjacentHTML('beforeend', resultsHTML);
+}
+
+// Función para cerrar los resultados
+function closeSearchResults() {
+    const existingResults = document.getElementById('search-results');
+    const existingOverlay = document.getElementById('search-overlay');
+    if (existingResults) existingResults.remove();
+    if (existingOverlay) existingOverlay.remove();
+}
+
+// Mostrar mensaje de búsqueda
+function showSearchMessage(message) {
+    const messageHTML = `
+        <div id="search-message" style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f5b21c;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 4px;
+            z-index: 10000;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        ">
+            ${message}
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', messageHTML);
+
+    // Auto-remove after 3 seconds
+    setTimeout(function() {
+        const msgElement = document.getElementById('search-message');
+        if (msgElement) {
+            msgElement.style.opacity = '0';
+            msgElement.style.transform = 'translateX(100%)';
+            msgElement.style.transition = 'all 0.3s ease';
+            setTimeout(() => msgElement.remove(), 300);
+        }
+    }, 3000);
+}
+
+// Toggle de categorías en móvil
+function initializeCategoriesToggle() {
+    const categoriesTitle = document.querySelector('.categories_title');
+    const categoriesMenu = document.querySelector('.categories_menu_toggle');
+
+    if (categoriesTitle && window.innerWidth <= 991) {
+        categoriesTitle.addEventListener('click', function() {
+            const isVisible = categoriesMenu.style.display !== 'none';
+            categoriesMenu.style.display = isVisible ? 'none' : 'block';
+
+            const icon = categoriesTitle.querySelector('.toggle-icon');
+            if (icon) {
+                icon.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(90deg)';
+            }
+        });
+
+        // Ocultar por defecto en móvil
+        if (window.innerWidth <= 991) {
+            categoriesMenu.style.display = 'none';
+        }
+    }
+
+    // Responsive handler
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 991) {
+            categoriesMenu.style.display = 'block';
+            const icon = categoriesTitle.querySelector('.toggle-icon');
+            if (icon) {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        } else {
+            categoriesMenu.style.display = 'none';
+        }
+    });
+}
+
+// Funciones adicionales para mejorar la experiencia de usuario
+document.addEventListener('click', function(e) {
+    // Cerrar modals al hacer click fuera
+    if (e.target.id === 'search-overlay') {
+        closeSearchResults();
+    }
+});
+
+// Prevenir comportamiento por defecto en links de ejemplo
+document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+        e.preventDefault();
+    }
+});
+
+// Función para manejar búsqueda en móvil
+function BuscarMobile(event) {
+    if (event.key === 'Enter') {
+        const searchTerm = event.target.value;
+        if (searchTerm.trim() !== '') {
+            showSearchResults(searchTerm, 'Todo');
+        }
+        return false;
+    }
+    return true;
+}
+
+// Smooth scroll para navegación interna
+function smoothScrollTo(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Inicializar tooltips y mejoras de accesibilidad
+function initializeAccessibility() {
+    // Añadir atributos de accesibilidad
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        if (!button.getAttribute('aria-label') && button.textContent) {
+            button.setAttribute('aria-label', button.textContent.trim());
+        }
+    });
+
+    // Mejorar navegación por teclado
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            // Cerrar modals con Escape
+            closeSearchResults();
+            closeDocumentModal();
+
+            // Cerrar menú móvil
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+}
+
+// Inicializar mejoras de accesibilidad cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', initializeAccessibility);
