@@ -15,123 +15,273 @@ const sigFileSystem = {
                 name: 'Políticas',
                 icon: 'fas fa-shield-alt',
                 children: {
-                    'calidad': {
+                    'politica_seguridad_salud_oc': {
                         type: 'folder',
-                        name: 'Política de Calidad',
+                        name: '1. POLÍTICA DE SEGURIDAD Y SALUD OC',
                         children: {
-                            'manual_calidad.pdf': {
+                            'politica_seguridad_salud_oc.pdf': {
                                 type: 'file',
-                                name: 'Manual de Política de Calidad ISO 9001.pdf',
-                                size: '2.4 MB',
-                                modified: '15/02/2025'
-                            },
-                            'procedimiento_control.pdf': {
-                                type: 'file',
-                                name: 'Procedimiento de Control de Calidad.pdf',
-                                size: '1.8 MB',
-                                modified: '12/02/2025'
-                            },
-                            'objetivos_calidad.xlsx': {
-                                type: 'file',
-                                name: 'Objetivos de Calidad 2025.xlsx',
-                                size: '945 KB',
-                                modified: '10/02/2025'
-                            },
-                            'matriz_riesgos.doc': {
-                                type: 'file',
-                                name: 'Matriz de Riesgos de Calidad.doc',
-                                size: '1.2 MB',
-                                modified: '08/02/2025'
-                            }
-                        }
-                    },
-                    'seguridad': {
-                        type: 'folder',
-                        name: 'Política de Seguridad y Salud',
-                        children: {
-                            'politica_sst.pdf': {
-                                type: 'file',
-                                name: 'Política de Seguridad Ocupacional.pdf',
-                                size: '1.9 MB',
-                                modified: '18/02/2025'
-                            },
-                            'manual_sst.pdf': {
-                                type: 'file',
-                                name: 'Manual del Sistema de SST.pdf',
-                                size: '3.2 MB',
-                                modified: '16/02/2025'
-                            },
-                            'plan_seguridad.doc': {
-                                type: 'file',
-                                name: 'Plan Anual de Seguridad.doc',
+                                name: 'Política de Seguridad y Salud Ocupacional.pdf',
                                 size: '2.1 MB',
-                                modified: '14/02/2025'
+                                modified: '5/8/2025'
                             },
-                            'registro_capacitaciones.xlsx': {
+                            'procedimiento_sso.doc': {
                                 type: 'file',
-                                name: 'Registro de Capacitaciones SST.xlsx',
-                                size: '896 KB',
-                                modified: '12/02/2025'
+                                name: 'Procedimiento de SSO.doc',
+                                size: '1.8 MB',
+                                modified: '5/8/2025'
                             }
                         }
                     },
-                    'ambiental': {
+                    'politica_medio_ambiente': {
                         type: 'folder',
-                        name: 'Política Medioambiental',
+                        name: '2. POLÍTICA DE MEDIO AMBIENTE',
                         children: {
-                            'sistema_ambiental.pdf': {
+                            'politica_medio_ambiente.pdf': {
                                 type: 'file',
-                                name: 'Sistema de Gestión Ambiental.pdf',
-                                size: '2.7 MB',
-                                modified: '20/02/2025'
+                                name: 'Política de Medio Ambiente.pdf',
+                                size: '1.8 MB',
+                                modified: '5/8/2025'
                             },
-                            'plan_ambiental.pdf': {
+                            'manual_ambiental.doc': {
                                 type: 'file',
-                                name: 'Plan de Manejo Ambiental.pdf',
-                                size: '1.6 MB',
-                                modified: '17/02/2025'
-                            },
-                            'monitoreo_ambiental.xlsx': {
-                                type: 'file',
-                                name: 'Monitoreo Ambiental 2025.xlsx',
-                                size: '1.1 MB',
-                                modified: '15/02/2025'
-                            },
-                            'procedimientos_emergencia.doc': {
-                                type: 'file',
-                                name: 'Procedimientos de Emergencia Ambiental.doc',
-                                size: '890 KB',
-                                modified: '13/02/2025'
-                            }
-                        }
-                    },
-                    'antisoborno': {
-                        type: 'folder',
-                        name: 'Política Anti-Soborno',
-                        children: {
-                            'manual_antisoborno.pdf': {
-                                type: 'file',
-                                name: 'Manual Anti-Soborno ISO 37001.pdf',
+                                name: 'Manual de Gestión Ambiental.doc',
                                 size: '2.2 MB',
-                                modified: '19/02/2025'
-                            },
-                            'codigo_conducta.pdf': {
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_calidad': {
+                        type: 'folder',
+                        name: '3. POLÍTICA DE CALIDAD',
+                        children: {
+                            'politica_calidad.pdf': {
                                 type: 'file',
-                                name: 'Código de Conducta Ética.pdf',
-                                size: '1.4 MB',
-                                modified: '15/02/2025'
+                                name: 'Política de Calidad.pdf',
+                                size: '1.9 MB',
+                                modified: '5/8/2025'
                             },
-                            'evaluacion_riesgos.xlsx': {
+                            'manual_calidad.doc': {
                                 type: 'file',
-                                name: 'Evaluación de Riesgos de Soborno.xlsx',
-                                size: '756 KB',
-                                modified: '13/02/2025'
+                                name: 'Manual de Calidad ISO 9001.doc',
+                                size: '3.1 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_responsabilidad_social': {
+                        type: 'folder',
+                        name: '4. POLÍTICA DE RESPONSABILIDAD SOCIAL',
+                        children: {
+                            'politica_responsabilidad_social.pdf': {
+                                type: 'file',
+                                name: 'Política de Responsabilidad Social.pdf',
+                                size: '2.2 MB',
+                                modified: '5/8/2025'
                             },
-                            'registro_debida_diligencia.doc': {
+                            'plan_responsabilidad_social.doc': {
                                 type: 'file',
-                                name: 'Registro de Debida Diligencia.doc',
-                                size: '980 KB',
-                                modified: '11/02/2025'
+                                name: 'Plan de Responsabilidad Social.doc',
+                                size: '1.9 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_alcohol_drogas': {
+                        type: 'folder',
+                        name: '5. POLÍTICA DE ALCOHOL Y DROGAS',
+                        children: {
+                            'politica_alcohol_drogas.pdf': {
+                                type: 'file',
+                                name: 'Política de Alcohol y Drogas.pdf',
+                                size: '1.7 MB',
+                                modified: '5/8/2025'
+                            },
+                            'procedimiento_control_sustancias.doc': {
+                                type: 'file',
+                                name: 'Procedimiento de Control de Sustancias.doc',
+                                size: '1.5 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_anticorrupcion': {
+                        type: 'folder',
+                        name: '6. POLÍTICA DE ANTICORRUPCIÓN',
+                        children: {
+                            'politica_anticorrupcion.pdf': {
+                                type: 'file',
+                                name: 'Política de Anticorrupción.pdf',
+                                size: '2.0 MB',
+                                modified: '5/8/2025'
+                            },
+                            'codigo_etica.doc': {
+                                type: 'file',
+                                name: 'Código de Ética.doc',
+                                size: '1.8 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_negativa_responsable': {
+                        type: 'folder',
+                        name: '7. POLÍTICA DE NEGATIVA RESPONSABLE',
+                        children: {
+                            'politica_negativa_responsable.pdf': {
+                                type: 'file',
+                                name: 'Política de Negativa Responsable.pdf',
+                                size: '1.6 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_relaciones_comunitarias': {
+                        type: 'folder',
+                        name: '8. POLÍTICA DE RELACIONES COMUNITARIAS',
+                        children: {
+                            'politica_relaciones_comunitarias.pdf': {
+                                type: 'file',
+                                name: 'Política de Relaciones Comunitarias.pdf',
+                                size: '2.3 MB',
+                                modified: '5/8/2025'
+                            },
+                            'plan_relaciones_comunitarias.doc': {
+                                type: 'file',
+                                name: 'Plan de Relaciones Comunitarias.doc',
+                                size: '2.1 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_derechos_abierta': {
+                        type: 'folder',
+                        name: '9. POLÍTICA DE DERECHOS ABIERTA',
+                        children: {
+                            'politica_derechos_abierta.pdf': {
+                                type: 'file',
+                                name: 'Política de Derechos Abierta.pdf',
+                                size: '1.9 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_prevencion_accidentes': {
+                        type: 'folder',
+                        name: '10. POLÍTICA DE PREVENCIÓN DE ACCIDENTES',
+                        children: {
+                            'politica_prevencion_accidentes.pdf': {
+                                type: 'file',
+                                name: 'Política de Prevención de Accidentes.pdf',
+                                size: '2.1 MB',
+                                modified: '5/8/2025'
+                            },
+                            'procedimiento_investigacion_accidentes.doc': {
+                                type: 'file',
+                                name: 'Procedimiento de Investigación de Accidentes.doc',
+                                size: '1.7 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_prevencion_sanciones': {
+                        type: 'folder',
+                        name: '11. POLÍTICA DE PREVENCIÓN Y SANCIONES',
+                        children: {
+                            'politica_prevencion_sanciones.pdf': {
+                                type: 'file',
+                                name: 'Política de Prevención y Sanciones.pdf',
+                                size: '1.8 MB',
+                                modified: '5/8/2025'
+                            },
+                            'reglamento_disciplinario.doc': {
+                                type: 'file',
+                                name: 'Reglamento Disciplinario.doc',
+                                size: '2.0 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_respuesta_emergencias': {
+                        type: 'folder',
+                        name: '12. POLÍTICA DE RESPUESTA A EMERGENCIAS',
+                        children: {
+                            'politica_respuesta_emergencias.pdf': {
+                                type: 'file',
+                                name: 'Política de Respuesta a Emergencias.pdf',
+                                size: '2.4 MB',
+                                modified: '5/8/2025'
+                            },
+                            'plan_emergencias.doc': {
+                                type: 'file',
+                                name: 'Plan de Emergencias.doc',
+                                size: '3.1 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_respuesta_emergencias_del': {
+                        type: 'folder',
+                        name: '13. POLÍTICA DE RESPUESTA A EMERGENCIAS DEL',
+                        children: {
+                            'politica_respuesta_emergencias_del.pdf': {
+                                type: 'file',
+                                name: 'Política de Respuesta a Emergencias DEL.pdf',
+                                size: '2.2 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_prevencion_enfermedades': {
+                        type: 'folder',
+                        name: '14. POLÍTICA PREVENCIÓN DE ENFERMEDADES',
+                        children: {
+                            'politica_prevencion_enfermedades.pdf': {
+                                type: 'file',
+                                name: 'Política Prevención de Enfermedades.pdf',
+                                size: '1.9 MB',
+                                modified: '5/8/2025'
+                            },
+                            'plan_salud_ocupacional.doc': {
+                                type: 'file',
+                                name: 'Plan de Salud Ocupacional.doc',
+                                size: '2.3 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_derechos_humanos': {
+                        type: 'folder',
+                        name: '15. POLÍTICA DERECHOS HUMANOS',
+                        children: {
+                            'politica_derechos_humanos.pdf': {
+                                type: 'file',
+                                name: 'Política Derechos Humanos.pdf',
+                                size: '2.0 MB',
+                                modified: '5/8/2025'
+                            },
+                            'manual_derechos_humanos.doc': {
+                                type: 'file',
+                                name: 'Manual de Derechos Humanos.doc',
+                                size: '1.8 MB',
+                                modified: '5/8/2025'
+                            }
+                        }
+                    },
+                    'politica_diversidad_inclusion': {
+                        type: 'folder',
+                        name: '16. POLÍTICA DE DIVERSIDAD E INCLUSIÓN',
+                        children: {
+                            'politica_diversidad_inclusion.pdf': {
+                                type: 'file',
+                                name: 'Política de Diversidad e Inclusión.pdf',
+                                size: '1.7 MB',
+                                modified: '5/8/2025'
+                            },
+                            'programa_diversidad.doc': {
+                                type: 'file',
+                                name: 'Programa de Diversidad.doc',
+                                size: '1.6 MB',
+                                modified: '5/8/2025'
                             }
                         }
                     }
@@ -556,7 +706,7 @@ function sigRenderGridView(folder) {
     for (const [key, item] of Object.entries(folder.children)) {
         const icon = item.type === 'folder' ? 'fas fa-folder' : 'fas fa-file-pdf';
         const itemClass = item.type === 'folder' ? 'folder' : 'file';
-        const onClick = item.type === 'folder' ? `sigOpenFolder('${key}')` : `sigViewDocument('${item.name}')`;
+        const onClick = item.type === 'folder' ? `sigOpenFolder('${key}')` : `sigViewDocument('${item.name}', event)`;
         
         html += `
             <div class="sig-grid-item ${itemClass}" onclick="${onClick}">
@@ -791,9 +941,119 @@ function sigClearSearch() {
 // FUNCIONES DE DOCUMENTOS
 // =========================================
 
-// Ver documento
-function sigViewDocument(documentName) {
-    // Simular apertura de documento
+// Función para obtener la ruta del documento según la categoría
+function sigGetDocumentPath(documentName, currentPath = sigCurrentPath) {
+    // Mapeo de categorías a carpetas del servidor
+    const categoryFolders = {
+        'politicas': 'politicas',
+        'politica_seguridad_salud_oc': 'politicas/1_politica_seguridad_salud_oc',
+        'politica_medio_ambiente': 'politicas/2_politica_medio_ambiente',
+        'politica_calidad': 'politicas/3_politica_calidad',
+        'politica_responsabilidad_social': 'politicas/4_politica_responsabilidad_social',
+        'politica_alcohol_drogas': 'politicas/5_politica_alcohol_drogas',
+        'politica_anticorrupcion': 'politicas/6_politica_anticorrupcion',
+        'politica_negativa_responsable': 'politicas/7_politica_negativa_responsable',
+        'politica_relaciones_comunitarias': 'politicas/8_politica_relaciones_comunitarias',
+        'politica_derechos_abierta': 'politicas/9_politica_derechos_abierta',
+        'politica_prevencion_accidentes': 'politicas/10_politica_prevencion_accidentes',
+        'politica_prevencion_sanciones': 'politicas/11_politica_prevencion_sanciones',
+        'politica_respuesta_emergencias': 'politicas/12_politica_respuesta_emergencias',
+        'politica_respuesta_emergencias_del': 'politicas/13_politica_respuesta_emergencias_del',
+        'politica_prevencion_enfermedades': 'politicas/14_politica_prevencion_enfermedades',
+        'politica_derechos_humanos': 'politicas/15_politica_derechos_humanos',
+        'politica_diversidad_inclusion': 'politicas/16_politica_diversidad_inclusion',
+        'documentos_sig': 'documentos_generales',
+        'gestion_procesos': 'gestion_procesos',
+        'indicadores': 'indicadores_gestion',
+        'procedimientos': 'procedimientos_internos',
+        'gestion_direccion': 'procedimientos_internos/gestion_direccion',
+        'gestion_administrativa': 'procedimientos_internos/gestion_administrativa',
+        'gestion_personal': 'procedimientos_internos/gestion_personal'
+    };
+
+    // Construir la ruta basada en el path actual
+    let folderPath = 'documentos_sig'; // Carpeta base por defecto
+    
+    if (currentPath.length > 1) {
+        const mainCategory = currentPath[1];
+        
+        if (currentPath.length > 2) {
+            // Estamos dentro de una subcarpeta (ej: dentro de una política específica)
+            const subCategory = currentPath[2];
+            folderPath = categoryFolders[subCategory] || categoryFolders[mainCategory] || 'otros';
+        } else {
+            // Estamos en la categoría principal
+            folderPath = categoryFolders[mainCategory] || 'otros';
+        }
+    }
+
+    // Limpiar el nombre del archivo para crear un nombre de archivo válido
+    const cleanFileName = documentName.replace(/\s+/g, '_').toLowerCase();
+    
+    // Ruta completa del documento
+    return `/documentos/${folderPath}/${cleanFileName}`;
+}
+
+// Ver documento - Abrir en nueva pestaña
+function sigViewDocument(documentName, event) {
+    // Prevenir propagación del evento si se llamó desde un click
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    const documentPath = sigGetDocumentPath(documentName);
+    
+    console.log('Intentando abrir documento:', documentName);
+    console.log('Ruta del documento:', documentPath);
+    
+    // Abrir en nueva pestaña
+    const newWindow = window.open(documentPath, '_blank');
+    
+    // Verificar si se pudo abrir la ventana (bloqueador de popups)
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        // Si no se puede abrir en nueva pestaña, mostrar modal con opciones
+        sigShowDocumentModal(documentName, documentPath);
+    } else {
+        // Mostrar mensaje de confirmación
+        sigShowMessage(`Abriendo documento: ${documentName}`, 'success');
+    }
+}
+
+// Descargar documento - Descarga real
+function sigDownloadDocument(documentName, event) {
+    // Prevenir propagación del evento si se llamó desde un click
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    const documentPath = sigGetDocumentPath(documentName);
+    
+    console.log('Iniciando descarga:', documentName);
+    console.log('Ruta de descarga:', documentPath);
+    
+    // Crear elemento de descarga
+    const link = document.createElement('a');
+    link.href = documentPath;
+    link.download = documentName; // Nombre sugerido para la descarga
+    link.style.display = 'none';
+    
+    // Agregar al DOM temporalmente
+    document.body.appendChild(link);
+    
+    // Simular click para iniciar descarga
+    link.click();
+    
+    // Remover del DOM
+    document.body.removeChild(link);
+    
+    // Mostrar mensaje de confirmación
+    sigShowMessage(`Iniciando descarga: ${documentName}`, 'download');
+}
+
+// Modal mejorado para visualización de documentos
+function sigShowDocumentModal(documentName, documentPath) {
     const modal = document.createElement('div');
     modal.style.cssText = `
         position: fixed;
@@ -813,21 +1073,33 @@ function sigViewDocument(documentName) {
             background: white;
             padding: 30px;
             border-radius: 8px;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         ">
             <h3 style="color: #113683; margin-bottom: 20px;">
                 <i class="fas fa-file-pdf" style="color: #dc3545; margin-right: 10px;"></i>
-                Documento
+                Visualizar Documento
             </h3>
-            <p style="margin-bottom: 20px; color: #666;">${documentName}</p>
+            <p style="margin-bottom: 20px; color: #666; font-weight: bold;">${documentName}</p>
             <p style="margin-bottom: 25px; font-size: 14px; color: #999;">
-                En un sistema real, aquí se abriría el visor de PDF o se descargaría el archivo.
+                Ruta del documento: ${documentPath}
             </p>
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <button onclick="sigDownloadDocument('${documentName}')" style="
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="window.open('${documentPath}', '_blank'); this.closest('[style*=\"position: fixed\"]').remove();" style="
+                    background: #113683;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    margin: 5px;
+                ">
+                    <i class="fas fa-external-link-alt"></i> Abrir en Nueva Pestaña
+                </button>
+                <button onclick="sigDownloadDocument('${documentName}'); this.closest('[style*=\"position: fixed\"]').remove();" style="
                     background: #28a745;
                     color: white;
                     border: none;
@@ -835,10 +1107,23 @@ function sigViewDocument(documentName) {
                     border-radius: 4px;
                     cursor: pointer;
                     font-size: 14px;
+                    margin: 5px;
                 ">
                     <i class="fas fa-download"></i> Descargar
                 </button>
-                <button onclick="this.closest('div').remove()" style="
+                <button onclick="navigator.clipboard.writeText('${documentPath}'); sigShowMessage('Ruta copiada al portapapeles', 'info');" style="
+                    background: #17a2b8;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    margin: 5px;
+                ">
+                    <i class="fas fa-copy"></i> Copiar Ruta
+                </button>
+                <button onclick="this.closest('[style*=\"position: fixed\"]').remove()" style="
                     background: #6c757d;
                     color: white;
                     border: none;
@@ -846,9 +1131,13 @@ function sigViewDocument(documentName) {
                     border-radius: 4px;
                     cursor: pointer;
                     font-size: 14px;
+                    margin: 5px;
                 ">
-                    Cerrar
+                    <i class="fas fa-times"></i> Cerrar
                 </button>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 4px; font-size: 12px; color: #666;">
+                <strong>Nota:</strong> Si el documento no se abre, verifica que la ruta del archivo sea correcta en tu servidor.
             </div>
         </div>
     `;
@@ -862,39 +1151,57 @@ function sigViewDocument(documentName) {
     document.body.appendChild(modal);
 }
 
-// Descargar documento
-function sigDownloadDocument(documentName) {
-    // Simular descarga
-    const link = document.createElement('a');
-    link.href = '#';
-    link.download = documentName + '.pdf';
+// Función mejorada para mostrar mensajes
+function sigShowMessage(message, type = 'info', duration = 3000) {
+    const colors = {
+        'success': '#28a745',
+        'download': '#28a745', 
+        'info': '#17a2b8',
+        'warning': '#ffc107',
+        'error': '#dc3545'
+    };
+
+    const icons = {
+        'success': 'fas fa-check-circle',
+        'download': 'fas fa-download',
+        'info': 'fas fa-info-circle', 
+        'warning': 'fas fa-exclamation-triangle',
+        'error': 'fas fa-times-circle'
+    };
     
-    // Mostrar mensaje de descarga
-    const message = document.createElement('div');
-    message.style.cssText = `
+    const messageDiv = document.createElement('div');
+    messageDiv.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
-        background: #28a745;
+        background: ${colors[type] || colors.info};
         color: white;
         padding: 15px 20px;
         border-radius: 4px;
-        z-index: 10000;
+        z-index: 10001;
         font-size: 14px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    `;
-    message.innerHTML = `
-        <i class="fas fa-download"></i> Iniciando descarga de: ${documentName}
+        max-width: 400px;
+        word-wrap: break-word;
     `;
     
-    document.body.appendChild(message);
+    messageDiv.innerHTML = `
+        <i class="${icons[type] || icons.info}" style="margin-right: 8px;"></i>
+        ${message}
+    `;
+    
+    document.body.appendChild(messageDiv);
     
     setTimeout(() => {
-        message.style.opacity = '0';
-        message.style.transform = 'translateX(100%)';
-        message.style.transition = 'all 0.3s ease';
-        setTimeout(() => message.remove(), 300);
-    }, 3000);
+        messageDiv.style.opacity = '0';
+        messageDiv.style.transform = 'translateX(100%)';
+        messageDiv.style.transition = 'all 0.3s ease';
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.remove();
+            }
+        }, 300);
+    }, duration);
 }
 
 // =========================================
