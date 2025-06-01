@@ -287,7 +287,7 @@ const sigFileSystem = {
                     }
                 }
             },
-            'documentos_sig': {
+            /*'documentos_sig': {
                 type: 'folder',
                 name: 'Documentos Generales del SIG',
                 icon: 'fas fa-file-alt',
@@ -317,8 +317,8 @@ const sigFileSystem = {
                         modified: '16/02/2025'
                     }
                 }
-            },
-            'gestion_procesos': {
+            },*/
+            /*'gestion_procesos': {
                 type: 'folder',
                 name: 'Gestión por Procesos',
                 icon: 'fas fa-sitemap',
@@ -348,8 +348,8 @@ const sigFileSystem = {
                         modified: '14/02/2025'
                     }
                 }
-            },
-            'indicadores': {
+            },*/
+            /*'indicadores': {
                 type: 'folder',
                 name: 'Indicadores de Gestión',
                 icon: 'fas fa-chart-bar',
@@ -379,8 +379,8 @@ const sigFileSystem = {
                         modified: '17/02/2025'
                     }
                 }
-            },
-            'procedimientos': {
+            },*/
+            /*'procedimientos': {
                 type: 'folder',
                 name: 'Procedimientos Internos',
                 icon: 'fas fa-cogs',
@@ -470,7 +470,7 @@ const sigFileSystem = {
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 };
@@ -943,9 +943,14 @@ function sigClearSearch() {
 
 // Función para obtener la ruta del documento según la categoría
 function sigGetDocumentPath(documentName, currentPath = sigCurrentPath) {
-    // Mapeo de categorías a carpetas del servidor
+    console.log('Building path for:', documentName);
+    console.log('Current path:', currentPath);
+    
+    // Ruta base donde están los documentos en tu servidor
+    const basePath = '/public/documentos_sig';
+    
+    // Mapeo directo basado en tu estructura real
     const categoryFolders = {
-        'politicas': 'politicas',
         'politica_seguridad_salud_oc': 'politicas/1_politica_seguridad_salud_oc',
         'politica_medio_ambiente': 'politicas/2_politica_medio_ambiente',
         'politica_calidad': 'politicas/3_politica_calidad',
@@ -972,26 +977,90 @@ function sigGetDocumentPath(documentName, currentPath = sigCurrentPath) {
     };
 
     // Construir la ruta basada en el path actual
-    let folderPath = 'documentos_sig'; // Carpeta base por defecto
+    let folderPath = 'documentos_generales'; // Carpeta base por defecto
     
-    if (currentPath.length > 1) {
+    if (currentPath.length > 2) {
+        // Estamos dentro de una subcarpeta específica (ej: dentro de una política)
+        const subCategory = currentPath[2];
+        folderPath = categoryFolders[subCategory] || 'otros';
+    } else if (currentPath.length > 1) {
+        // Estamos en la categoría principal
         const mainCategory = currentPath[1];
-        
-        if (currentPath.length > 2) {
-            // Estamos dentro de una subcarpeta (ej: dentro de una política específica)
-            const subCategory = currentPath[2];
-            folderPath = categoryFolders[subCategory] || categoryFolders[mainCategory] || 'otros';
-        } else {
-            // Estamos en la categoría principal
-            folderPath = categoryFolders[mainCategory] || 'otros';
-        }
+        folderPath = categoryFolders[mainCategory] || 'otros';
     }
 
-    // Limpiar el nombre del archivo para crear un nombre de archivo válido
-    const cleanFileName = documentName.replace(/\s+/g, '_').toLowerCase();
+    // Mapeo de nombres de archivos a nombres reales en el servidor
+    const fileMapping = {
+        // Política 1 - Seguridad y Salud Ocupacional
+        'Política de Seguridad y Salud Ocupacional.pdf': 'política_de_seguridad_y_salud_ocupacional.pdf',
+        'Procedimiento de SSO.doc': 'procedimiento_de_sso.doc',
+        
+        // Política 2 - Medio Ambiente
+        'Política de Medio Ambiente.pdf': 'política_de_medio_ambiente.pdf',
+        'Manual de Gestión Ambiental.doc': 'manual_de_gestión_ambiental.doc',
+        
+        // Política 3 - Calidad
+        'Política de Calidad.pdf': 'política_de_calidad.pdf',
+        'Manual de Calidad ISO 9001.doc': 'manual_de_calidad_iso_9001.doc',
+        
+        // Política 4 - Responsabilidad Social
+        'Política de Responsabilidad Social.pdf': 'política_de_responsabilidad_social.pdf',
+        'Plan de Responsabilidad Social.doc': 'plan_de_responsabilidad_social.doc',
+        
+        // Política 5 - Alcohol y Drogas
+        'Política de Alcohol y Drogas.pdf': 'política_de_alcohol_y_drogas.pdf',
+        'Procedimiento de Control de Sustancias.doc': 'procedimiento_de_control_de_sustancias.doc',
+        
+        // Política 6 - Anticorrupción
+        'Política de Anticorrupción.pdf': 'política_de_anticorrupción.pdf',
+        'Código de Ética.doc': 'código_de_ética.doc',
+        
+        // Política 7 - Negativa Responsable
+        'Política de Negativa Responsable.pdf': 'política_de_negativa_responsable.pdf',
+        
+        // Política 8 - Relaciones Comunitarias
+        'Política de Relaciones Comunitarias.pdf': 'política_de_relaciones_comunitarias.pdf',
+        'Plan de Relaciones Comunitarias.doc': 'plan_de_relaciones_comunitarias.doc',
+        
+        // Política 9 - Derechos Abierta
+        'Política de Derechos Abierta.pdf': 'política_de_derechos_abierta.pdf',
+        
+        // Política 10 - Prevención de Accidentes
+        'Política de Prevención de Accidentes.pdf': 'política_de_prevención_de_accidentes.pdf',
+        'Procedimiento de Investigación de Accidentes.doc': 'procedimiento_de_investigación_de_accidentes.doc',
+        
+        // Política 11 - Prevención y Sanciones
+        'Política de Prevención y Sanciones.pdf': 'política_de_prevención_y_sanciones.pdf',
+        'Reglamento Disciplinario.doc': 'reglamento_disciplinario.doc',
+        
+        // Política 12 - Respuesta a Emergencias
+        'Política de Respuesta a Emergencias.pdf': 'política_de_respuesta_a_emergencias.pdf',
+        'Plan de Emergencias.doc': 'plan_de_emergencias.doc',
+        
+        // Política 13 - Respuesta a Emergencias DEL
+        'Política de Respuesta a Emergencias DEL.pdf': 'política_de_respuesta_a_emergencias_del.pdf',
+        
+        // Política 14 - Prevención de Enfermedades
+        'Política Prevención de Enfermedades.pdf': 'política_prevención_de_enfermedades.pdf',
+        'Plan de Salud Ocupacional.doc': 'plan_de_salud_ocupacional.doc',
+        
+        // Política 15 - Derechos Humanos
+        'Política Derechos Humanos.pdf': 'política_derechos_humanos.pdf',
+        'Manual de Derechos Humanos.doc': 'manual_de_derechos_humanos.doc',
+        
+        // Política 16 - Diversidad e Inclusión
+        'Política de Diversidad e Inclusión.pdf': 'política_de_diversidad_e_inclusión.pdf',
+        'Programa de Diversidad.doc': 'programa_de_diversidad.doc'
+    };
+
+    // Obtener el nombre real del archivo
+    const realFileName = fileMapping[documentName] || documentName.replace(/\s+/g, '_').toLowerCase();
     
-    // Ruta completa del documento
-    return `/documentos/${folderPath}/${cleanFileName}`;
+    // Construir la ruta completa
+    const fullPath = `${basePath}/${folderPath}/${realFileName}`;
+    
+    console.log('Generated path:', fullPath);
+    return fullPath;
 }
 
 // Ver documento - Abrir en nueva pestaña
@@ -1004,20 +1073,39 @@ function sigViewDocument(documentName, event) {
 
     const documentPath = sigGetDocumentPath(documentName);
     
-    console.log('Intentando abrir documento:', documentName);
-    console.log('Ruta del documento:', documentPath);
+    console.log('=== DEBUG VIEW DOCUMENT ===');
+    console.log('Document name:', documentName);
+    console.log('Current path:', sigCurrentPath);
+    console.log('Generated path:', documentPath);
+    console.log('============================');
     
-    // Abrir en nueva pestaña
-    const newWindow = window.open(documentPath, '_blank');
-    
-    // Verificar si se pudo abrir la ventana (bloqueador de popups)
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        // Si no se puede abrir en nueva pestaña, mostrar modal con opciones
-        sigShowDocumentModal(documentName, documentPath);
-    } else {
-        // Mostrar mensaje de confirmación
-        sigShowMessage(`Abriendo documento: ${documentName}`, 'success');
-    }
+    // Verificar si el archivo existe antes de intentar abrirlo
+    fetch(documentPath, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                console.log('✅ File exists, opening...');
+                // Abrir en nueva pestaña
+                const newWindow = window.open(documentPath, '_blank');
+                
+                // Verificar si se pudo abrir la ventana (bloqueador de popups)
+                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                    // Si no se puede abrir en nueva pestaña, mostrar modal con opciones
+                    sigShowDocumentModal(documentName, documentPath);
+                } else {
+                    // Mostrar mensaje de confirmación
+                    sigShowMessage(`Abriendo documento: ${documentName}`, 'success');
+                }
+            } else {
+                console.log('❌ File not found:', response.status);
+                sigShowMessage(`Error: Documento no encontrado en el servidor`, 'error');
+                sigShowDocumentModal(documentName, documentPath);
+            }
+        })
+        .catch(error => {
+            console.log('❌ Error checking file:', error);
+            sigShowMessage(`Error al verificar el documento`, 'error');
+            sigShowDocumentModal(documentName, documentPath);
+        });
 }
 
 // Descargar documento - Descarga real
@@ -1030,26 +1118,44 @@ function sigDownloadDocument(documentName, event) {
 
     const documentPath = sigGetDocumentPath(documentName);
     
-    console.log('Iniciando descarga:', documentName);
-    console.log('Ruta de descarga:', documentPath);
+    console.log('=== DEBUG DOWNLOAD DOCUMENT ===');
+    console.log('Document name:', documentName);
+    console.log('Current path:', sigCurrentPath);
+    console.log('Generated path:', documentPath);
+    console.log('===============================');
     
-    // Crear elemento de descarga
-    const link = document.createElement('a');
-    link.href = documentPath;
-    link.download = documentName; // Nombre sugerido para la descarga
-    link.style.display = 'none';
-    
-    // Agregar al DOM temporalmente
-    document.body.appendChild(link);
-    
-    // Simular click para iniciar descarga
-    link.click();
-    
-    // Remover del DOM
-    document.body.removeChild(link);
-    
-    // Mostrar mensaje de confirmación
-    sigShowMessage(`Iniciando descarga: ${documentName}`, 'download');
+    // Verificar si el archivo existe antes de intentar descargarlo
+    fetch(documentPath, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                console.log('✅ File exists, starting download...');
+                
+                // Crear elemento de descarga
+                const link = document.createElement('a');
+                link.href = documentPath;
+                link.download = documentName; // Nombre sugerido para la descarga
+                link.style.display = 'none';
+                
+                // Agregar al DOM temporalmente
+                document.body.appendChild(link);
+                
+                // Simular click para iniciar descarga
+                link.click();
+                
+                // Remover del DOM
+                document.body.removeChild(link);
+                
+                // Mostrar mensaje de confirmación
+                sigShowMessage(`Iniciando descarga: ${documentName}`, 'download');
+            } else {
+                console.log('❌ File not found for download:', response.status);
+                sigShowMessage(`Error: Documento no encontrado en el servidor`, 'error');
+            }
+        })
+        .catch(error => {
+            console.log('❌ Error checking file for download:', error);
+            sigShowMessage(`Error al verificar el documento para descarga`, 'error');
+        });
 }
 
 // Modal mejorado para visualización de documentos
@@ -1421,6 +1527,56 @@ function sigSearchFor(term) {
 // DEBUGGING Y DESARROLLO
 // =========================================
 
+// Función para verificar todas las rutas de documentos
+function sigCheckAllDocumentPaths() {
+    console.log('=== VERIFICACIÓN DE RUTAS DE DOCUMENTOS ===');
+    
+    function checkFolder(folder, path = []) {
+        if (folder.children) {
+            for (const [key, item] of Object.entries(folder.children)) {
+                if (item.type === 'file') {
+                    // Simular la ruta actual para este archivo
+                    const testPath = ['root', ...path, key];
+                    const originalPath = sigCurrentPath;
+                    sigCurrentPath = testPath;
+                    
+                    const documentPath = sigGetDocumentPath(item.name);
+                    
+                    console.log('---');
+                    console.log('Archivo:', item.name);
+                    console.log('Ruta simulada:', testPath);
+                    console.log('URL generada:', documentPath);
+                    
+                    // Restaurar ruta original
+                    sigCurrentPath = originalPath;
+                } else if (item.type === 'folder') {
+                    checkFolder(item, [...path, key]);
+                }
+            }
+        }
+    }
+    
+    checkFolder(sigFileSystem.root);
+    console.log('=== FIN VERIFICACIÓN ===');
+}
+
+// Función para verificar un archivo específico
+function sigTestDocumentPath(documentName, pathArray) {
+    const originalPath = sigCurrentPath;
+    sigCurrentPath = pathArray;
+    
+    const documentPath = sigGetDocumentPath(documentName);
+    
+    console.log('=== TEST DOCUMENTO ESPECÍFICO ===');
+    console.log('Documento:', documentName);
+    console.log('Path usado:', pathArray);
+    console.log('URL generada:', documentPath);
+    console.log('================================');
+    
+    sigCurrentPath = originalPath;
+    return documentPath;
+}
+
 // Solo para desarrollo - remover en producción
 if (typeof console !== 'undefined') {
     console.log('SIG Police.js cargado correctamente');
@@ -1429,4 +1585,11 @@ if (typeof console !== 'undefined') {
     console.log('- sigSearchFor(term): Buscar documentos');
     console.log('- sigShowSystemInfo(): Mostrar información del sistema');
     console.log('- sigGetCurrentState(): Obtener estado actual');
+    console.log('- sigCheckAllDocumentPaths(): Verificar todas las rutas');
+    console.log('- sigTestDocumentPath(name, path): Probar ruta específica');
+    
+    // Ejemplos de uso para debugging
+    console.log('\n=== EJEMPLOS DE USO PARA DEBUG ===');
+    console.log('sigTestDocumentPath("Política de Calidad.pdf", ["root", "politicas", "politica_calidad"])');
+    console.log('sigCheckAllDocumentPaths()');
 }

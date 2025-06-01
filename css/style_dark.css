@@ -464,4 +464,109 @@ body.dark-mode .theme-toggle-label {
   background-color: #d32f2f !important; /* Cambio de color al pasar el ratón */
 }
 
+/* =====================
+   SISTEMA INTEGRADO DE GESTIÓN - MODO OSCURO
+====================== */
+
+/* Header SIG en modo oscuro */
+.dark-mode .sig-header {
+    background: linear-gradient(135deg, #690505 0%, #0a2142 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedores en modo oscuro */
+.dark-mode .sig-breadcrumb,
+.dark-mode .sig-search-container,
+.dark-mode .sig-navigation-panel,
+.dark-mode .sig-content-panel,
+.dark-mode .sig-info {
+    background: #2d2d2d;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Elementos de navegación en modo oscuro */
+.dark-mode .sig-nav-item {
+    color: #e0e0e0;
+    border-bottom-color: #404040;
+}
+
+.dark-mode .sig-nav-item:hover {
+    background: #363636;
+    color: #fff;
+}
+
+.dark-mode .sig-nav-item.active {
+    background: #0d2142;
+    color: #fff;
+}
+
+/* Items y carpetas en modo oscuro */
+.dark-mode .sig-folder-item,
+.dark-mode .sig-file-item,
+.dark-mode .sig-grid-item {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #e0e0e0;
+}
+
+.dark-mode .sig-folder-item:hover,
+.dark-mode .sig-file-item:hover,
+.dark-mode .sig-grid-item:hover {
+    background: #363636;
+    border-color: #0d2142;
+}
+
+/* Encabezados y títulos en modo oscuro */
+.dark-mode .sig-content-header {
+    background: #363636;
+    border-bottom-color: #404040;
+}
+
+.dark-mode .sig-content-title {
+    color: #fff;
+}
+
+/* Botones en modo oscuro */
+.dark-mode .sig-view-btn {
+    background: #404040;
+    color: #e0e0e0;
+}
+
+.dark-mode .sig-view-btn.active {
+    background: #0d2142;
+    color: #fff;
+}
+
+/* Campos de búsqueda en modo oscuro */
+.dark-mode .sig-search-box input {
+    background: #363636;
+    border-color: #404040;
+    color: #fff;
+}
+
+.dark-mode .sig-search-box input::placeholder {
+    color: #808080;
+}
+
+/* Estadísticas en modo oscuro */
+.dark-mode .sig-stat-item {
+    background: #363636;
+}
+
+.dark-mode .sig-stat-number {
+    color: #4a90e2;
+}
+
+.dark-mode .sig-stat-label {
+    color: #e0e0e0;
+}
+
+/* Nombres de items en modo oscuro */
+.dark-mode .sig-item-name {
+    color: #ffffff;
+    font-weight: 500;
+    word-break: break-word;
+}
+
 
