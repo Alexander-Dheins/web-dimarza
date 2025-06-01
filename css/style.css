@@ -1437,7 +1437,7 @@ ul.navbar-nav > li > a {
 
 /* Contactanos */
 /* Estilos generales del formulario y las alertas */
-.container-contact {
+/*.container-contact {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -1459,9 +1459,9 @@ input, textarea {
   margin-top: 5px;
 }
 
-button {
+/*button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #ac0202;
   color: white;
   font-size: 16px;
   border: none;
@@ -1469,7 +1469,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #ffffff;
 }
 
 .alert {
@@ -1498,7 +1498,7 @@ button:hover {
   font-size: 14px;
   display: none;
 }
-
+*/
 /* Table of Content
 ==================================================
 1.    Slider
@@ -1540,7 +1540,7 @@ button:hover {
     height: 450px;
   }
 }
-
+/* Fondo semitransparente detrás del texto */
 .slider-content {
   position: relative;
   height: 100%;
@@ -1555,16 +1555,21 @@ button:hover {
   display: inline-block;
   padding: 0 15px;
   margin: 0 0 10px;
-  text-shadow: black 0.9em 0.1em 1em;
+  text-shadow: rgba(0, 0, 0, 0.884) 0.9em 0.1em 1em;
 }
-
+.slider-content .col-md-12 {
+    position: relative;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.329); /* Fondo negro semitransparente */
+    border-radius: 10px; /* Bordes redondeados opcionales */
+}
 .slide-title {
   font-size: 30px;
   line-height: 36px;
   font-weight: 300;
   color: #f8f8f8;
   margin: 20px 0 10px;
-  text-shadow: black 0.1em 0.1em 0.2em;
+  text-shadow: 0.1em 0.1em 0.6em rgba(0, 0, 0, 0.9);
 }
 
 @media (max-width: 991px) {
@@ -1576,7 +1581,7 @@ button:hover {
 
 @media (max-width: 575px) {
   .slide-title {
-    font-size: 16px;
+    font-size: 30px;
     text-shadow: black 0.1em 0.1em 0.2em;
   }
 }
@@ -1962,31 +1967,60 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* Facts
+/* Facts servicios trabajadores contadores
 ================================================== */
 .facts-wrapper {
   text-align: center;
+  padding: 20px 0; /* Añade padding para mejor distribución */
 }
 
-.facts-wrapper .ts-facts {
+.ts-facts {
   color: #fff;
+  display: flex; /* Usa flexbox para alinear todo el contenido */
+  flex-direction: column; /* Apila ícono, número y título verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  min-height: 200px; /* Asegura una altura mínima para el centrado vertical */
 }
 
-.ts-facts .ts-facts-icon i {
-  font-size: 42px;
-  color: #b91f1f;
+.ts-facts-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Espacio entre ícono y número */
 }
 
-.ts-facts .ts-facts-content .ts-facts-num {
+.ts-facts-img img {
+  max-width: 80px; /* Tamaño uniforme para las imágenes */
+  max-height: 80px; /* Ajusta según el tamaño de tus íconos */
+  object-fit: contain; /* Mantiene las proporciones */
+}
+
+.ts-facts-content {
+  text-align: center; /* Asegura que el número y título estén centrados */
+}
+
+.ts-facts-content .ts-facts-num {
   color: #fff;
   font-size: 44px;
-  margin: 30px 0 20px;
+  margin: 0 0 10px; /* Reduce el margen superior para mejor centrado */
 }
 
-.ts-facts .ts-facts-content .ts-facts-title {
+.ts-facts-content .ts-facts-title {
   font-size: 16px;
   color: #b91f1f;
   margin: 0;
+}
+
+/* Ajuste para responsividad */
+@media (max-width: 991px) {
+  .ts-facts-content .ts-facts-num {
+    font-size: 38px;
+  }
+  
+  .ts-facts-content .ts-facts-title {
+    font-size: 14px;
+  }
 }
 
 /* Services
@@ -2411,6 +2445,7 @@ button:hover {
 /* Content area
 ================================================== */
 /* Accordion */
+/* Estilos base (modo claro por defecto) */
 .accordion-group .card {
   border-radius: 0;
   margin-bottom: 10px;
@@ -2419,6 +2454,8 @@ button:hover {
 
 .accordion-group .card-body {
   padding: 15px 20px;
+  background-color: #fff; /* Fondo blanco en modo claro */
+  color: #333; /* Texto oscuro en modo claro */
 }
 
 .accordion-group .card-body img {
@@ -2432,38 +2469,91 @@ button:hover {
   font-weight: 700;
   padding: 13px 15px;
   padding-bottom: 10px;
+  position: relative;
+  background-color: #b91f1f; /* Fondo rojo por defecto */
+  color: #fff; /* Texto blanco */
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  transition: background-color 0.3s ease; /* Suaviza el cambio de fondo */
+}
+
+.accordion-group .card-header .btn:hover {
+  background-color: #000000; /* Cambio al pasar el mouse */
+}
+
+.accordion-group .card-header .btn[aria-expanded="true"] {
+  background-color: #000000 !important; /* Fondo azul cuando está expandido, con !important para evitar sobrescritura */
+  color: #fff; /* Mantener texto blanco para contraste */
 }
 
 .accordion-group .card-header .btn:before {
   font-family: "Font Awesome 5 Free";
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   font-size: 14px;
   right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 3px 8px 1px;
   text-align: center;
   border-radius: 3px;
-  top: 12px;
-  content: "\f107";
-  font-weight: 700;
-  background-color: #333;
-  color: #fff;
-  transition: .3s;
+  content: "\f107"; /* Flecha hacia abajo */
+  font-weight: 900;
+  background-color: #fff; /* Fondo blanco para la flecha */
+  color: #b91f1f; /* Color rojo para la flecha */
+  transition: transform 0.3s ease, color 0.3s ease; /* Animación para flecha y color */
 }
 
-.accordion-group .card-header .btn[aria-expanded="true"] {
-  color: #b91f1f;
-}
-
-.accordion-group .card-header .btn[aria-expanded="true"]::before {
-  content: "\f106";
-  background-color: #b91f1f;
+.accordion-group .card-header .btn[aria-expanded="true"]:before {
+  content: "\f106"; /* Flecha hacia arriba */
+  transform: translateY(-50%) rotate(180deg); /* Rota 180° cuando está expandido */
+  color: #fff; /* Color blanco para la flecha al expandir, para mejor contraste */
 }
 
 .accordion-group.accordion-classic .card-header .btn:before {
-  display: none;
+  display: block; /* Muestra la flecha */
 }
 
+.card-header {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .accordion-group .card {
+    border-bottom: 1px solid #555 !important; /* Borde más visible en modo oscuro */
+  }
+
+  .accordion-group .card-body {
+    background-color: #222; /* Fondo oscuro para el contenido */
+    color: #ddd; /* Texto claro para contraste */
+  }
+
+  .accordion-group .card-header .btn {
+    background-color: #b91f1f; /* Fondo rojo por defecto */
+    color: #fff;
+  }
+
+  .accordion-group .card-header .btn:hover {
+    background-color: #a11c1c; /* Cambio al pasar el mouse */
+  }
+
+  .accordion-group .card-header .btn[aria-expanded="true"] {
+    background-color: #305e9b !important; /* Fondo azul cuando está expandido, con !important para evitar sobrescritura */
+    color: #fff;
+  }
+
+  .accordion-group .card-header .btn:before {
+    background-color: #ddd; /* Fondo de la flecha más claro en modo oscuro */
+    color: #b91f1f; /* Color de la flecha */
+  }
+
+  .accordion-group .card-header .btn[aria-expanded="true"]:before {
+    color: #000000; /* Color blanco para la flecha al expandir */
+  }
+}
 /* Unidades Mineras */
 /* Estilo del carrusel */
 .carousel-wrapper { 
@@ -3904,4 +3994,93 @@ label {
 .bt_ldr-img:hover {
   transform: scale(1.1); /* Agranda la imagen cuando se pasa el ratón */
   box-shadow: 0 0 15px 5px rgba(202, 45, 6, 0.6); /* Brillo amarillo al pasar el ratón */
+}
+
+
+.google-map {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #dfdfdf; /* Borde para que se vea bien en modo claro */
+}
+
+/* Hacer el mapa responsive */
+.google-map iframe {
+  width: 100%;
+  height: 450px; /* Altura fija, puedes ajustarla según tus necesidades */
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .google-map {
+    border: 1px solid #555; /* Borde más claro para modo oscuro */
+  }
+
+  .google-map iframe {
+    filter: brightness(0.9); /* Reduce el brillo del mapa para que no desentone en modo oscuro */
+  }
+}
+
+
+/* Estilos para el botón DECARGAR BROCHURE */
+.animated-btn {
+    animation: pulse 2s infinite; /* Aplica la animación de pulso */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+.animated-btn:hover {
+    background: linear-gradient(45deg, #343a40, #6c757d); /* Gradiente de color */
+}
+
+.animated-btn {
+    position: relative;
+    border: none;
+}
+
+.animated-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff; /* Color del borde */
+    transition: width 0.3s ease;
+}
+
+.animated-btn:hover::before {
+    width: 100%; /* El borde se extiende al pasar el mouse */
+}
+
+.breadcrumb {
+  padding: 0;
+  background: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.breadcrumb li a,
+.breadcrumb .breadcrumb-item,
+.breadcrumb li a:focus,
+.breadcrumb li a:hover {
+  color: #fff !important;
+}
+
+.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: #fff;
 }

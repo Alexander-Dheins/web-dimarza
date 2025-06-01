@@ -281,8 +281,8 @@ body, .navbar, .footer, .btn {
 
 /* Modo claro: Color de fondo y resplandor */
 body:not(.dark-mode) .theme-toggle-label {
-  background-color: #ADD8E6; /* Azul claro para el día */
-  box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.5); /* Resplandor amarillo */
+  background-color: #1f7fdd; /* Azul claro para el día */
+  box-shadow: 0 0 8px 2px rgba(10, 84, 102, 0.911); /* Resplandor amarillo */
 }
 /* Modo oscuro: Color de fondo */
 body.dark-mode .theme-toggle-label {
@@ -318,7 +318,7 @@ body.dark-mode .theme-toggle-label {
 .theme-toggle-light {
   opacity: 1;
   transform: rotate(0deg) scale(1);
-  color: #e0d20e; /* Color dorado */
+  color: #bdb005; /* Color dorado */
 }
 
 /* Icono Luna (Modo Oscuro - inicial) */
