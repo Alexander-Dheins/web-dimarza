@@ -1,5 +1,6 @@
 # Página Web de Dimarza Sac
 
+![alt text](r.img.png)
 Bienvenido al repositorio de la página web de **Dimarza Sac**, una empresa dedicada a brindar soluciones innovadoras en la industria minera. Este proyecto presenta una interfaz moderna y responsiva, adaptándose tanto al modo claro como al modo oscuro.
 
 ## Descripción
