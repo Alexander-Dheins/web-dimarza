@@ -1,21 +1,96 @@
 /* =============================================
-   FORMULARIO DE CONTACTO DIMARZA - JAVASCRIPT
+   FORMULARIO DE CONTACTO DIMARZA - VERSIÓN CORREGIDA
    Archivo: dmz-contact.js
-   Incluir este script al final del body en Contacto.html
 ============================================= */
 
 // Variables globales
 let ipObtained = false;
 
+// Configuración del servidor
+const SERVER_CONFIG = {
+    baseUrl: 'http://localhost:3000',
+    endpoints: {
+        form: '/enviar-formulario',
+        health: '/health',
+        ip: '/api/ip'
+    }
+};
+
+// Función de logging mejorada
+function log(message, data = null, type = 'info') {
+    const timestamp = new Date().toLocaleTimeString();
+    const prefix = type === 'error' ? '❌' : type === 'success' ? '✅' : '🔍';
+    
+    console.log(`${prefix} [${timestamp}] ${message}`);
+    if (data) {
+        console.log('📊 Datos:', data);
+    }
+}
+
+// Verificar conectividad con el servidor
+async function checkServerConnection() {
+    try {
+        log('Verificando conexión con el servidor...', { url: SERVER_CONFIG.baseUrl });
+        
+        const response = await fetch(`${SERVER_CONFIG.baseUrl}${SERVER_CONFIG.endpoints.health}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text();
+            log('Respuesta no es JSON', { contentType, text: text.substring(0, 200) }, 'error');
+            throw new Error('Respuesta del servidor no es JSON válido');
+        }
+        
+        const data = await response.json();
+        log('Servidor conectado correctamente', data, 'success');
+        return true;
+        
+    } catch (error) {
+        log('Error de conectividad con el servidor', {
+            error: error.message,
+            serverUrl: SERVER_CONFIG.baseUrl,
+            suggestion: 'Verifica que mail_server.js esté corriendo en puerto 3000'
+        }, 'error');
+        
+        showStatusMessage(`No se puede conectar con el servidor. Verifica que esté ejecutándose en ${SERVER_CONFIG.baseUrl}`, 'error');
+        return false;
+    }
+}
+
 // Obtener IP del usuario
 async function getUserIP() {
     try {
+        log('Obteniendo IP del usuario...');
+        
+        try {
+            const response = await fetch(`${SERVER_CONFIG.baseUrl}${SERVER_CONFIG.endpoints.ip}`);
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('userIP').textContent = data.ip;
+                ipObtained = true;
+                log('IP obtenida desde servidor local', { ip: data.ip }, 'success');
+                return;
+            }
+        } catch (error) {
+            log('Error obteniendo IP desde servidor local, intentando servicio externo...', error);
+        }
+        
         const response = await fetch('https://api.ipify.org?format=json');
         const data = await response.json();
         document.getElementById('userIP').textContent = data.ip;
         ipObtained = true;
+        log('IP obtenida desde servicio externo', { ip: data.ip }, 'success');
     } catch (error) {
-        console.warn('Error obteniendo IP:', error);
+        log('Error obteniendo IP', error, 'error');
         document.getElementById('userIP').textContent = 'No disponible';
         ipObtained = false;
     }
@@ -28,13 +103,12 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    if (!phone) return true; // Campo opcional
+    if (!phone) return true;
     const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
     return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
 }
 
 function validateName(name) {
-    // Verificar que no contenga números o caracteres especiales excesivos
     const nameRegex = /^[a-záéíóúñA-ZÁÉÍÓÚÑ\s]{2,50}$/;
     return nameRegex.test(name.trim());
 }
@@ -90,6 +164,8 @@ function showStatusMessage(message, type) {
         statusElement.textContent = message;
         statusElement.className = `dmz-status-message dmz-${type} dmz-show`;
         
+        log(`Status mostrado al usuario: ${message}`, { type });
+        
         setTimeout(() => {
             statusElement.classList.remove('dmz-show');
         }, 5000);
@@ -98,84 +174,81 @@ function showStatusMessage(message, type) {
 
 // Validación completa del formulario
 function validateForm() {
+    log('Iniciando validación del formulario...');
     let isValid = true;
     
-    // Limpiar validaciones previas
     ['name', 'email', 'phone', 'subject', 'message'].forEach(clearValidation);
     const policyError = document.getElementById('policyError');
     if (policyError) policyError.classList.remove('dmz-show');
 
-    // Obtener valores
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const policyAccept = document.getElementById('policyAccept').checked;
+    const formData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        subject: document.getElementById('subject').value.trim(),
+        message: document.getElementById('message').value.trim(),
+        policyAccept: document.getElementById('policyAccept').checked
+    };
+    
+    log('Datos del formulario obtenidos', formData);
 
-    // Validar nombre
-    if (!name) {
+    if (!formData.name) {
         showError('name', 'El nombre es requerido');
         isValid = false;
-    } else if (!validateName(name)) {
+    } else if (!validateName(formData.name)) {
         showError('name', 'Ingrese un nombre válido (solo letras y espacios)');
         isValid = false;
-    } else if (name.length < 2 || name.length > 50) {
+    } else if (formData.name.length < 2 || formData.name.length > 50) {
         showError('name', 'El nombre debe tener entre 2 y 50 caracteres');
         isValid = false;
     } else {
         showSuccess('name');
     }
 
-    // Validar email
-    if (!email) {
+    if (!formData.email) {
         showError('email', 'El correo electrónico es requerido');
         isValid = false;
-    } else if (!validateEmail(email)) {
+    } else if (!validateEmail(formData.email)) {
         showError('email', 'Ingrese un correo electrónico válido');
         isValid = false;
     } else {
         showSuccess('email');
     }
 
-    // Validar teléfono (opcional)
-    if (phone && !validatePhone(phone)) {
+    if (formData.phone && !validatePhone(formData.phone)) {
         showError('phone', 'Ingrese un número de teléfono válido');
         isValid = false;
-    } else if (phone) {
+    } else if (formData.phone) {
         showSuccess('phone');
     }
 
-    // Validar asunto
-    if (!subject) {
+    if (!formData.subject) {
         showError('subject', 'El asunto es requerido');
         isValid = false;
-    } else if (subject.length < 5 || subject.length > 100) {
+    } else if (formData.subject.length < 5 || formData.subject.length > 100) {
         showError('subject', 'El asunto debe tener entre 5 y 100 caracteres');
         isValid = false;
-    } else if (isSpamContent(subject)) {
+    } else if (isSpamContent(formData.subject)) {
         showError('subject', 'El asunto contiene contenido no permitido');
         isValid = false;
     } else {
         showSuccess('subject');
     }
 
-    // Validar mensaje
-    if (!message) {
+    if (!formData.message) {
         showError('message', 'El mensaje es requerido');
         isValid = false;
-    } else if (message.length < 10 || message.length > 2000) {
+    } else if (formData.message.length < 10 || formData.message.length > 2000) {
         showError('message', 'El mensaje debe tener entre 10 y 2000 caracteres');
         isValid = false;
-    } else if (isSpamContent(message)) {
+    } else if (isSpamContent(formData.message)) {
         showError('message', 'El mensaje contiene contenido no permitido');
         isValid = false;
     } else {
         showSuccess('message');
     }
 
-    // Validar políticas
-    if (!policyAccept) {
+    if (!formData.policyAccept) {
         if (policyError) {
             policyError.textContent = 'Debe aceptar las políticas de privacidad';
             policyError.classList.add('dmz-show');
@@ -183,67 +256,143 @@ function validateForm() {
         isValid = false;
     }
 
+    log(`Validación completada. Resultado: ${isValid ? 'VÁLIDO' : 'INVÁLIDO'}`);
     return isValid;
 }
 
-// Manejo del envío del formulario
+// Manejo del envío del formulario - VERSIÓN CORREGIDA
 async function handleFormSubmit(event) {
     event.preventDefault();
+    log('🚀 Iniciando envío del formulario...');
+    
+    const serverConnected = await checkServerConnection();
+    if (!serverConnected) {
+        log('Cancelando envío: servidor no disponible', null, 'error');
+        return;
+    }
     
     if (!validateForm()) {
+        log('Cancelando envío: validación falló', null, 'error');
         showStatusMessage('Por favor, corrija los errores antes de enviar', 'error');
         return;
     }
 
     const submitBtn = document.getElementById('submitBtn');
-    if (!submitBtn) return;
+    if (!submitBtn) {
+        log('Error: botón de envío no encontrado', null, 'error');
+        return;
+    }
 
-    // Mostrar loading
     submitBtn.classList.add('dmz-loading');
     submitBtn.disabled = true;
+    log('UI actualizada: mostrando loading...');
 
     try {
-        // Preparar datos del formulario
-        const formData = new FormData(document.getElementById('contactForm'));
+        const nombre = document.getElementById('name').value.trim();
+        const correo = document.getElementById('email').value.trim();
+        const telefono = document.getElementById('phone').value.trim();
+        const asunto = document.getElementById('subject').value.trim();
+        const mensaje = document.getElementById('message').value.trim();
         const userIP = document.getElementById('userIP').textContent;
-        formData.append('userIP', userIP);        // Enviar formulario
-        const response = await fetch('http://localhost:3000/enviar-formulario', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json'
-            },
-            body: formData
+        const policyCheckbox = document.getElementById('policyAccept');
+        
+        log('🔍 Estado del checkbox:', {
+            checked: policyCheckbox.checked,
+            value: policyCheckbox.value,
+            name: policyCheckbox.name
+        });
+        
+        if (!policyCheckbox.checked) {
+            log('❌ Checkbox NO marcado');
+            showStatusMessage('Debe aceptar las políticas de privacidad', 'error');
+            submitBtn.classList.remove('dmz-loading');
+            submitBtn.disabled = false;
+            return;
+        }
+        
+        const requestData = {
+            nombre: nombre,
+            correo: correo,
+            telefono: telefono,
+            asunto: asunto,
+            mensaje: mensaje,
+            userIP: userIP,
+            policyAccept: 'on'
+        };
+        
+        log('✅ Checkbox marcado, enviando datos como JSON');
+        log('Preparando envío...', {
+            url: `${SERVER_CONFIG.baseUrl}${SERVER_CONFIG.endpoints.form}`,
+            userIP: userIP,
+            dataKeys: Object.keys(requestData)
         });
 
+        console.log('📤 Datos finales a enviar:');
+        console.log(requestData);
+
+        const response = await fetch(`${SERVER_CONFIG.baseUrl}${SERVER_CONFIG.endpoints.form}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        });
+
+        log('Respuesta recibida', {
+            status: response.status,
+            statusText: response.statusText,
+            ok: response.ok,
+            contentType: response.headers.get('content-type')
+        });
+
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text();
+            log('Respuesta no es JSON', { contentType, text: text.substring(0, 200) }, 'error');
+            throw new Error('El servidor no devolvió JSON válido');
+        }
+
         const result = await response.json();
+        log('Datos de respuesta parseados', result);
 
         if (response.ok && result.success) {
+            log('✅ Formulario enviado exitosamente!', result, 'success');
             showStatusMessage('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
             
-            // Limpiar formulario
             document.getElementById('contactForm').reset();
             ['name', 'email', 'phone', 'subject', 'message'].forEach(clearValidation);
             
-            // Limpiar checkbox de políticas
             const policyError = document.getElementById('policyError');
             if (policyError) policyError.classList.remove('dmz-show');
             
         } else {
+            log('❌ Error en la respuesta del servidor', result, 'error');
             showStatusMessage(result.message || 'Error al enviar el mensaje', 'error');
         }
     } catch (error) {
-        console.error('Error de conexión:', error);
-        showStatusMessage('Error de conexión. Verifique su internet e inténtelo nuevamente.', 'error');
+        log('❌ Error de conexión fatal', {
+            error: error.message,
+            name: error.name,
+            stack: error.stack
+        }, 'error');
+        
+        if (error.message.includes('JSON')) {
+            showStatusMessage('Error de comunicación con el servidor. Verifica que el servidor de correo esté corriendo correctamente.', 'error');
+        } else {
+            showStatusMessage('Error de conexión. Verifique su internet e inténtelo nuevamente.', 'error');
+        }
     } finally {
-        // Quitar loading
         submitBtn.classList.remove('dmz-loading');
         submitBtn.disabled = false;
+        log('UI restaurada: loading removido');
     }
 }
 
-// Validación en tiempo real
+// Configuración de validación en tiempo real
 function setupRealTimeValidation() {
-    // Email validation
+    log('Configurando validación en tiempo real...');
+    
     const emailField = document.getElementById('email');
     if (emailField) {
         emailField.addEventListener('blur', function() {
@@ -256,7 +405,6 @@ function setupRealTimeValidation() {
         });
     }
 
-    // Phone validation
     const phoneField = document.getElementById('phone');
     if (phoneField) {
         phoneField.addEventListener('blur', function() {
@@ -269,7 +417,6 @@ function setupRealTimeValidation() {
         });
     }
 
-    // Name validation
     const nameField = document.getElementById('name');
     if (nameField) {
         nameField.addEventListener('blur', function() {
@@ -282,7 +429,6 @@ function setupRealTimeValidation() {
         });
     }
 
-    // Subject validation
     const subjectField = document.getElementById('subject');
     if (subjectField) {
         subjectField.addEventListener('blur', function() {
@@ -295,7 +441,6 @@ function setupRealTimeValidation() {
         });
     }
 
-    // Message validation
     const messageField = document.getElementById('message');
     if (messageField) {
         messageField.addEventListener('blur', function() {
@@ -307,6 +452,8 @@ function setupRealTimeValidation() {
             }
         });
     }
+    
+    log('Validación en tiempo real configurada', null, 'success');
 }
 
 // Modal de políticas
@@ -314,7 +461,7 @@ function openPolicyModal() {
     const modal = document.getElementById('policyModal');
     if (modal) {
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -322,11 +469,10 @@ function closePolicyModal() {
     const modal = document.getElementById('policyModal');
     if (modal) {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restaurar scroll del body
+        document.body.style.overflow = 'auto';
     }
 }
 
-// Cerrar modal al hacer click fuera
 function setupModalEvents() {
     const modal = document.getElementById('policyModal');
     if (modal) {
@@ -337,7 +483,6 @@ function setupModalEvents() {
         });
     }
 
-    // Cerrar modal con tecla Escape
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             closePolicyModal();
@@ -345,7 +490,6 @@ function setupModalEvents() {
     });
 }
 
-// Limitar caracteres en tiempo real
 function setupCharacterLimits() {
     const subjectField = document.getElementById('subject');
     const messageField = document.getElementById('message');
@@ -369,7 +513,6 @@ function setupCharacterLimits() {
     }
 }
 
-// Prevenir envío múltiple
 function preventMultipleSubmits() {
     const form = document.getElementById('contactForm');
     let isSubmitting = false;
@@ -378,13 +521,13 @@ function preventMultipleSubmits() {
         form.addEventListener('submit', function(event) {
             if (isSubmitting) {
                 event.preventDefault();
+                log('Envío bloqueado: ya hay uno en proceso');
                 return;
             }
             
             isSubmitting = true;
             handleFormSubmit(event);
             
-            // Reset flag después de 5 segundos
             setTimeout(() => {
                 isSubmitting = false;
             }, 5000);
@@ -393,23 +536,17 @@ function preventMultipleSubmits() {
 }
 
 // Inicialización
-function initContactForm() {
-    // Obtener IP del usuario
-    getUserIP();
+async function initContactForm() {
+    log('🚀 Inicializando formulario de contacto Dimarza (puerto 3000)...');
     
-    // Configurar validación en tiempo real
+    await checkServerConnection();
+    await getUserIP();
     setupRealTimeValidation();
-    
-    // Configurar eventos del modal
     setupModalEvents();
-    
-    // Configurar límites de caracteres
     setupCharacterLimits();
-    
-    // Prevenir envíos múltiples
     preventMultipleSubmits();
     
-    console.log('Formulario de contacto Dimarza inicializado correctamente');
+    log('✅ Formulario de contacto Dimarza inicializado correctamente', null, 'success');
 }
 
 // Auto-inicializar cuando el DOM esté listo
@@ -422,4 +559,4 @@ if (document.readyState === 'loading') {
 // Hacer funciones globales para uso en onclick
 window.openPolicyModal = openPolicyModal;
 window.closePolicyModal = closePolicyModal;
-
+window.checkServerConnection = checkServerConnection;

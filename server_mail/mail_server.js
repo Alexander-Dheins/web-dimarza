@@ -11,7 +11,7 @@ const validator = require('validator');
 const requestIp = require('request-ip');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; // ← NUEVO PUERTO
 
 // Lista negra de IPs (puedes agregar IPs problemáticas)
 const blockedIPs = new Set([
@@ -23,9 +23,18 @@ const blockedIPs = new Set([
 const submissionLog = new Map();
 
 // Middlewares de seguridad
-app.use(helmet());
 app.use(cors({
-    origin: ['http://localhost', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://dimarza.com'],
+    origin: [
+        'http://localhost',
+        'http://localhost:3000',
+        'http://localhost:8080',
+        'http://127.0.0.1:3000',
+        'http://127.0.0.1:8080',
+        'http://localhost/web_dimarza',
+        'http://localhost/web_dimarza/',
+        'https://dimarza.com',
+        'null'  // Agregar este origen para permitir solicitudes desde archivos locales
+    ],
     methods: ['GET', 'POST'],
     credentials: true
 }));
@@ -226,8 +235,39 @@ app.post('/enviar-formulario', contactLimiter, async (req, res) => {
             policyAccept
         } = req.body;
         
-        // Verificar que se aceptaron las políticas
-        if (!policyAccept || policyAccept !== 'on') {
+        // DEBUG: Imprimir todos los datos recibidos
+        console.log('📝 Datos recibidos del formulario:', {
+            nombre: nombre,
+            correo: correo,
+            telefono: telefono,
+            asunto: asunto,
+            mensaje: mensaje?.substring(0, 50) + '...',
+            userIP: userIP,
+            policyAccept: policyAccept,
+            policyAcceptType: typeof policyAccept,
+            allBodyKeys: Object.keys(req.body)
+        });
+
+        // Verificar que se aceptaron las políticas - VALIDACIÓN MEJORADA
+        const isPolicyAccepted = policyAccept === 'on' || 
+                                policyAccept === 'true' || 
+                                policyAccept === true || 
+                                policyAccept === '1' ||
+                                (req.body.policyAccept && req.body.policyAccept === 'on');
+
+        console.log('🔍 Validación de políticas:', {
+            policyAccept: policyAccept,
+            isPolicyAccepted: isPolicyAccepted,
+            checkboxValue: req.body.policyAccept
+        });
+
+        if (!isPolicyAccepted) {
+            console.log('❌ Políticas no aceptadas:', {
+                received: policyAccept,
+                type: typeof policyAccept,
+                bodyKeys: Object.keys(req.body)
+            });
+            
             return res.status(400).json({
                 success: false,
                 message: 'Debe aceptar las políticas de privacidad'
