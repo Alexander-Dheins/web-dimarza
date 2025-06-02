@@ -4084,3 +4084,494 @@ label {
 .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
   color: #fff;
 }
+
+
+/* =============================================
+   FORMULARIO DE CONTACTO DIMARZA - CSS ESPECÍFICO
+   Archivo: dmz-contact.css
+   Usar clases con prefijo "dmz-" para evitar conflictos
+============================================= */
+
+/* Contenedor principal del formulario de contacto */
+.dmz-contact-form-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 0;
+    position: relative;
+}
+
+.dmz-contact-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dmz-contact-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #b91f1f 0%, #ff6b6b 100%);
+}
+
+/* Header del formulario */
+.dmz-form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dmz-form-header h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.dmz-form-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Campos del formulario */
+.dmz-form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.dmz-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dmz-form-control {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.dmz-form-control:focus {
+    outline: none;
+    border-color: #b91f1f;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(185, 31, 31, 0.1);
+    transform: translateY(-2px);
+}
+
+.dmz-form-control.dmz-error {
+    border-color: #dc3545;
+    background: #fff5f5;
+}
+
+.dmz-form-control.dmz-success {
+    border-color: #28a745;
+    background: #f8fff9;
+}
+
+/* Textarea específico */
+.dmz-form-control.dmz-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+/* Iconos en campos */
+.dmz-form-group.dmz-has-icon {
+    position: relative;
+}
+
+.dmz-form-group.dmz-has-icon .dmz-form-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 18px;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.dmz-form-group.dmz-has-icon .dmz-form-control:focus + .dmz-form-icon {
+    color: #b91f1f;
+}
+
+/* Mensajes de error */
+.dmz-error-message {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+    font-weight: 500;
+}
+
+.dmz-error-message.dmz-show {
+    display: block;
+}
+
+/* Información de IP */
+.dmz-ip-info {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.dmz-ip-info i {
+    color: #856404;
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.dmz-ip-info-text {
+    color: #856404;
+    font-size: 14px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.dmz-ip-address {
+    color: #b91f1f;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+}
+
+/* Checkbox de políticas */
+.dmz-policy-checkbox {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.dmz-checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.dmz-custom-checkbox {
+    position: relative;
+    display: inline-block;
+}
+
+.dmz-custom-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.dmz-checkbox-mark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.dmz-custom-checkbox input[type="checkbox"]:checked + .dmz-checkbox-mark {
+    background: #b91f1f;
+    border-color: #b91f1f;
+}
+
+.dmz-custom-checkbox input[type="checkbox"]:checked + .dmz-checkbox-mark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dmz-policy-text {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.dmz-policy-link {
+    color: #b91f1f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dmz-policy-link:hover {
+    text-decoration: underline;
+    color: #b91f1f;
+}
+
+/* Botón de envío */
+.dmz-submit-btn {
+    background: linear-gradient(135deg, #b91f1f 0%, #8b0000 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.dmz-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(185, 31, 31, 0.3);
+}
+
+.dmz-submit-btn:active {
+    transform: translateY(0);
+}
+
+.dmz-submit-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.dmz-submit-btn .dmz-btn-text {
+    transition: opacity 0.3s ease;
+}
+
+.dmz-submit-btn.dmz-loading .dmz-btn-text {
+    opacity: 0;
+}
+
+.dmz-submit-btn .dmz-loading-spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dmz-submit-btn.dmz-loading .dmz-loading-spinner {
+    opacity: 1;
+}
+
+.dmz-spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 2px solid white;
+    width: 20px;
+    height: 20px;
+    animation: dmz-spin 1s linear infinite;
+}
+
+@keyframes dmz-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mensajes de estado */
+.dmz-status-message {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+}
+
+.dmz-status-message.dmz-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.dmz-status-message.dmz-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.dmz-status-message.dmz-show {
+    display: block;
+    animation: dmz-slideInDown 0.3s ease;
+}
+
+@keyframes dmz-slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal de políticas */
+.dmz-policy-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.dmz-policy-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 20px;
+}
+
+.dmz-policy-modal h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.dmz-policy-modal-text {
+    color: #666;
+    line-height: 1.6;
+}
+
+.dmz-policy-close-btn {
+    background: #b91f1f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.dmz-policy-close-btn:hover {
+    background: #8b0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dmz-contact-form-container {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+
+    .dmz-form-header h2 {
+        font-size: 2rem;
+    }
+
+    .dmz-checkbox-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dmz-submit-btn {
+        padding: 16px 30px;
+        font-size: 14px;
+    }
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .dmz-contact-form-section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+
+    .dmz-contact-form-container {
+        background: #333;
+        color: #fff;
+    }
+
+    .dmz-form-header h2,
+    .dmz-form-group label {
+        color: #fff;
+    }
+
+    .dmz-form-header p {
+        color: #ccc;
+    }
+
+    .dmz-form-control {
+        background: #444;
+        border-color: #555;
+        color: #fff;
+    }
+
+    .dmz-form-control:focus {
+        background: #555;
+    }
+
+    .dmz-ip-info {
+        background: linear-gradient(135deg, #3a3a00 0%, #4a4a00 100%);
+        border-color: #666;
+    }
+
+    .dmz-ip-info-text {
+        color: #ffeb3b;
+    }
+
+    .dmz-policy-checkbox {
+        background: #444;
+        border-color: #555;
+    }
+
+    .dmz-policy-text {
+        color: #ccc;
+    }
+
+    .dmz-checkbox-mark {
+        background: #555;
+        border-color: #666;
+    }
+
+    .dmz-policy-modal-content {
+        background: #333;
+        color: #fff;
+    }
+
+    .dmz-policy-modal h3 {
+        color: #fff;
+    }
+
+    .dmz-policy-modal-text {
+        color: #ccc;
+    }
+}

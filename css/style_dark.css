@@ -555,7 +555,7 @@ body.dark-mode .theme-toggle-label {
 }
 
 .dark-mode .sig-stat-number {
-    color: #4a90e2;
+    color: #ffffff;
 }
 
 .dark-mode .sig-stat-label {
@@ -568,5 +568,10 @@ body.dark-mode .theme-toggle-label {
     font-weight: 500;
     word-break: break-word;
 }
-
+.dark-mode .sig-info h3 {
+    color: #ffffff;
+}
+.dark-mode .sig-breadcrumb-item {
+    color: #e0e0e0;
+}
 

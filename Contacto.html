@@ -275,7 +275,110 @@
     </div><!-- Content row end -->
   </div><!-- Container end -->
 </section><!-- Main container end -->
+<!-- =============================================
+     FORMULARIO DE CONTACTO DIMARZA - HTML
+     Reemplazar la sección del formulario en Contacto.html
+============================================= -->
 
+<section class="dmz-contact-form-section">
+  <div class="container">
+    <div class="dmz-contact-form-container">
+      <div class="dmz-form-header">
+        <h2>Formulario de Contacto</h2>
+        <p>Estamos aquí para ayudarte. Envíanos tu consulta y te responderemos pronto.</p>
+      </div>
+
+      <!-- Información de IP -->
+      <div class="dmz-ip-info">
+        <i class="fas fa-globe"></i>
+        <p class="dmz-ip-info-text">
+          Tu dirección IP: <span class="dmz-ip-address" id="userIP">Obteniendo...</span>
+          <br><small>Esta información nos ayuda a prevenir spam y mejorar la seguridad.</small>
+        </p>
+      </div>
+
+      <!-- Mensaje de estado -->
+      <div id="statusMessage" class="dmz-status-message"></div>
+
+      <form id="contactForm" novalidate>
+        <div class="dmz-form-group dmz-has-icon">
+          <label for="name">Nombre Completo *</label>
+          <input type="text" id="name" name="nombre" class="dmz-form-control" required>
+          <i class="fas fa-user dmz-form-icon"></i>
+          <div class="dmz-error-message" id="nameError"></div>
+        </div>
+
+        <div class="dmz-form-group dmz-has-icon">
+          <label for="email">Correo Electrónico *</label>
+          <input type="email" id="email" name="correo" class="dmz-form-control" required>
+          <i class="fas fa-envelope dmz-form-icon"></i>
+          <div class="dmz-error-message" id="emailError"></div>
+        </div>
+
+        <div class="dmz-form-group dmz-has-icon">
+          <label for="phone">Teléfono</label>
+          <input type="tel" id="phone" name="telefono" class="dmz-form-control">
+          <i class="fas fa-phone dmz-form-icon"></i>
+          <div class="dmz-error-message" id="phoneError"></div>
+        </div>
+
+        <div class="dmz-form-group dmz-has-icon">
+          <label for="subject">Asunto *</label>
+          <input type="text" id="subject" name="asunto" class="dmz-form-control" required>
+          <i class="fas fa-tag dmz-form-icon"></i>
+          <div class="dmz-error-message" id="subjectError"></div>
+        </div>
+
+        <div class="dmz-form-group">
+          <label for="message">Mensaje *</label>
+          <textarea id="message" name="mensaje" class="dmz-form-control dmz-textarea" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+          <div class="dmz-error-message" id="messageError"></div>
+        </div>
+
+        <!-- Checkbox de políticas -->
+        <div class="dmz-policy-checkbox">
+          <div class="dmz-checkbox-container">
+            <label class="dmz-custom-checkbox">
+              <input type="checkbox" id="policyAccept" name="policyAccept" required>
+              <span class="dmz-checkbox-mark"></span>
+            </label>
+            <p class="dmz-policy-text">
+              Acepto las <a href="#" class="dmz-policy-link" onclick="openPolicyModal()">Políticas de Privacidad y Tratamiento de Datos</a>. 
+              Entiendo que mis datos serán utilizados únicamente para responder a mi consulta y no serán compartidos con terceros.
+            </p>
+          </div>
+          <div class="dmz-error-message" id="policyError"></div>
+        </div>
+
+        <button type="submit" class="dmz-submit-btn" id="submitBtn">
+          <span class="dmz-btn-text">Enviar Mensaje</span>
+          <div class="dmz-loading-spinner">
+            <div class="dmz-spinner"></div>
+          </div>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de Políticas -->
+<div id="policyModal" class="dmz-policy-modal">
+  <div class="dmz-policy-modal-content">
+    <h3>Políticas de Privacidad y Tratamiento de Datos</h3>
+    <div class="dmz-policy-modal-text">
+      <p><strong>1. Recopilación de Datos:</strong> Recopilamos únicamente los datos necesarios para responder a su consulta.</p>
+      <p><strong>2. Uso de la Información:</strong> Sus datos serán utilizados exclusivamente para contactarlo y brindarle la información solicitada.</p>
+      <p><strong>3. Protección de Datos:</strong> Implementamos medidas de seguridad para proteger su información personal.</p>
+      <p><strong>4. No Compartimos Datos:</strong> No compartimos su información con terceros sin su consentimiento.</p>
+      <p><strong>5. Derechos del Usuario:</strong> Tiene derecho a solicitar la eliminación de sus datos en cualquier momento.</p>
+      <p><strong>6. Contacto:</strong> Para consultas sobre privacidad, contáctenos en info@dimarza.com</p>
+      <p><strong>7. Consentimiento:</strong> Al enviar este formulario, usted consiente el procesamiento de sus datos personales de acuerdo con estas políticas.</p>
+      <p><strong>8. Tiempo de Retención:</strong> Sus datos serán conservados únicamente el tiempo necesario para responder a su consulta.</p>
+      <p><strong>9. Derechos ARCO:</strong> Puede ejercer sus derechos de Acceso, Rectificación, Cancelación y Oposición contactándonos.</p>
+    </div>
+    <button onclick="closePolicyModal()" class="dmz-policy-close-btn">Cerrar</button>
+  </div>
+</div>
   <footer id="footer" class="footer bg-overlay">
     <div class="footer-main">
       <div class="container">
@@ -380,6 +483,8 @@
   <!-- Template custom -->
   <script src="js/script.js"></script>
   <script src="js/coqi.js"></script>
+  <script src="js/mail_server.js"></script>
+  <script src="js/dmz-contact.js"></script>
   
   </div><!-- Body inner end -->
 
