@@ -1434,71 +1434,6 @@ ul.navbar-nav > li > a {
 .search-area .search-block {
   right: 0;
 }
-
-/* Contactanos */
-/* Estilos generales del formulario y las alertas */
-/*.container-contact {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  margin-top: 5px;
-}
-
-/*button {
-  padding: 10px 20px;
-  background-color: #ac0202;
-  color: white;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #ffffff;
-}
-
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-.alert-success {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.alert-error {
-  background-color: #f44336;
-  color: white;
-}
-
-.form-required {
-  color: red;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  display: none;
-}
-*/
 /* Table of Content
 ==================================================
 1.    Slider
@@ -2023,110 +1958,8 @@ button:hover {
   }
 }
 
-/* Services
-================================================== */
-/* Service box */
-.ts-service-box .ts-service-icon i {
-  font-size: 36px;
-  float: left;
-  color: #b91f1f;
-}
 
-.ts-service-box .ts-service-box-content {
-  margin-left: 62px;
-  margin-bottom: 30px;
-}
 
-.tab-content .ts-service-box .ts-service-box-content {
-  margin-left: 90px;
-}
-
-.ts-service-box .ts-service-box-content h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  line-height: 28px;
-}
-
-.ts-service-box .ts-service-box-info {
-  margin-left: 25px;
-  margin-bottom: 40px;
-}
-
-.service-box-title {
-  font-size: 16px;
-  margin: 0 0 10px;
-}
-
-.service-box-title a {
-  color: #333;
-}
-
-.service-box-title a:hover {
-  color: #b91f1f;
-}
-
-/* Service box bg */
-.ts-service-box-bg {
-  background: #252525;
-  color: #fff;
-  padding: 30px;
-}
-
-.ts-service-box-bg h4,
-.ts-service-box-bg h3 {
-  color: #fff;
-}
-
-/* Service box 
-
-.ts-service-box .ts-service-icon i {
-  font-size: 24px;
-  float: left;
-  color: #fff;
-  background: $color-primary;
-  border-radius: 100%;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-}
-
-.ts-service-box .ts-service-box-content {
-  margin-left: 80px;
-  margin-bottom: 30px;
-}
-
-.tab-content .ts-service-box .ts-service-box-content {
-  margin-left: 90px;
-}
-
-.ts-service-box .ts-service-box-content h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.ts-service-box .ts-service-box-info {
-  margin-left: 90px;
-  margin-bottom: 40px;
-}
-
-.service-box-title {
-  font-size: 18px;
-  margin: 0 0 10px;
-}
-
-.service-box-title a {
-  color: #333;
-}
-
-.service-box-title a:hover {
-  color: $color-primary;
-}
-
-.service-center-img {
-  padding: 0 20px;
-}
-*/
 /* Icon squre */
 .ts-service-icon.icon-round i {
   font-size: 24px;
@@ -3064,7 +2897,9 @@ img.testimonial-thumb {
 @media (max-width: 767px) {
   .banner-title {
     font-size: 48px;
-  }
+  
+  
+   }
 }
 
 @media (max-width: 575px) {
@@ -3500,7 +3335,7 @@ label {
 }
 
 .post-body {
-  padding: 20px 0;
+  padding: 20px 0 5px;
 }
 
 .entry-header .entry-title {
@@ -4085,7 +3920,6 @@ label {
   color: #fff;
 }
 
-
 /* =============================================
    FORMULARIO DE CONTACTO DIMARZA - CSS ESPECÍFICO
    Archivo: dmz-contact.css
@@ -4158,7 +3992,7 @@ label {
 .dmz-form-control {
     width: 100%;
     padding: 15px 20px;
-    border: 2px solid #e9ecef;
+    border: 2px solid #0058b1;
     border-radius: 10px;
     font-size: 16px;
     transition: all 0.3s ease;
@@ -4177,12 +4011,12 @@ label {
 
 .dmz-form-control.dmz-error {
     border-color: #dc3545;
-    background: #fff5f5;
+    background: #000000;
 }
 
 .dmz-form-control.dmz-success {
-    border-color: #28a745;
-    background: #f8fff9;
+    border-color: #00d1ae;
+    background: #000000;
 }
 
 /* Textarea específico */
@@ -4512,7 +4346,7 @@ label {
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
     .dmz-contact-form-section {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        background: linear-gradient(135deg, #1a569b 0%, #8a0606 100%);
     }
 
     .dmz-contact-form-container {
@@ -4573,6 +4407,106 @@ label {
 
     .dmz-policy-modal-text {
         color: #ccc;
+    }
+}
+
+/* Estilos para la cuadrícula de noticias */
+.news-grid .post {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.news-grid .post:hover {
+    transform: translateY(-5px);
+}
+
+.news-grid .post-media {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.news-grid .post-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-grid .post:hover .post-media img {
+    transform: scale(1.1);
+}
+
+.news-grid .post-body {
+    padding: 15px;
+}
+
+.news-grid .entry-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.news-grid .entry-content {
+    margin-bottom: 15px;
+}
+
+.news-grid .short-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-height: 4.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.news-grid .post-meta {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.news-grid .post-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+}
+
+.news-grid .btn-sm {
+    padding: 5px 15px;
+    font-size: 0.8rem;
+}
+
+/* Ajustes para cuadrícula de 4 columnas */
+.news-grid .col-md-3 {
+    padding: 10px;
+}
+
+.news-grid .post {
+    margin-bottom: 0;
+}
+
+.news-grid .entry-title {
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+.news-grid .post-media {
+    height: 160px;
+}
+
+/* Responsive para tablets y móviles */
+@media (max-width: 991px) {
+    .news-grid .col-md-3 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .news-grid .col-md-3 {
+        width: 100%;
     }
 }
 
